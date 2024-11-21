@@ -1,34 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\",
+  "WorkspaceRootPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\desktop\\mycode\\gitrepo\\cncswebapiarvibranch\\cncswebapi\\cncswebapiproject\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\dto\\transactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\desktop\\mycode\\gitrepo\\cncswebapiarvibranch\\cncswebapi\\cncswebapiproject\\dto\\transactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\dto\\transactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\robert.verano\\source\\repos\\cncswebapiproject\\cncswebapiproject\\interface\\itransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\interface\\itransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,8 +17,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1300,
-          "SelectedChildIndex": 9,
+          "DockedWidth": 780,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,93 +38,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\appsettings.json",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\appsettings.json",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\appsettings.json",
-              "RelativeToolTip": "CNCSwebApiProject\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-20T05:05:09.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Program.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Program.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Program.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Program.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\TransactionController.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\TransactionController.cs",
+              "ToolTip": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\TransactionController.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\TransactionController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwD8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T05:04:05.134Z",
+              "WhenOpened": "2024-11-21T07:26:36.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TransactionController.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Controllers\\TransactionController.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\TransactionController.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Controllers\\TransactionController.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\TransactionController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAwwIYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:59:34.569Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Helper\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Helper\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Helper\\MappingProfile.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Helper\\MappingProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:58:36.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "TransactionDto.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Dto\\TransactionDto.cs",
+              "DocumentMoniker": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\TransactionDto.cs",
               "RelativeDocumentMoniker": "CNCSwebApiProject\\Dto\\TransactionDto.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Dto\\TransactionDto.cs",
+              "ToolTip": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\TransactionDto.cs",
               "RelativeToolTip": "CNCSwebApiProject\\Dto\\TransactionDto.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwBYAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAcwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:57:46.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TransactionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Repository\\TransactionRepository.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Repository\\TransactionRepository.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Repository\\TransactionRepository.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Repository\\TransactionRepository.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:54:45.123Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ITransaction.cs",
-              "DocumentMoniker": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Interface\\ITransaction.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Interface\\ITransaction.cs",
-              "ToolTip": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\Interface\\ITransaction.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Interface\\ITransaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T04:53:24.194Z",
+              "WhenOpened": "2024-11-21T07:13:31.437Z",
               "EditorCaption": ""
             }
           ]

@@ -99,7 +99,7 @@ public partial class CncssystemContext : DbContext
                 .HasColumnName("LogID");
             entity.Property(e => e.LogType).HasMaxLength(20);
             entity.Property(e => e.PickUpDate).HasPrecision(0);
-            entity.Property(e => e.ProductVenderId).HasColumnName("ProductVenderID");
+            entity.Property(e => e.ProductVendorId).HasColumnName("ProductVendorID");
             entity.Property(e => e.RepliedBy).HasMaxLength(50);
             entity.Property(e => e.Shift).HasMaxLength(50);
             entity.Property(e => e.Status).HasMaxLength(20);
@@ -113,8 +113,8 @@ public partial class CncssystemContext : DbContext
                 .HasForeignKey(d => d.DescriptionId)
                 .HasConstraintName("FK_tblTransactionLogs_tblDescriptions");
 
-            entity.HasOne(d => d.ProductVender).WithMany(p => p.TblTransactionLogs)
-                .HasForeignKey(d => d.ProductVenderId)
+            entity.HasOne(d => d.ProductVendor).WithMany(p => p.TblTransactionLogs)
+                .HasForeignKey(d => d.ProductVendorId)
                 .HasConstraintName("FK_tblTransactionLogs_tblProductVendor");
         });
 
@@ -132,7 +132,7 @@ public partial class CncssystemContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("LogID");
             entity.Property(e => e.PickUpDate).HasPrecision(0);
-            entity.Property(e => e.ProductVenderId).HasColumnName("ProductVenderID");
+            entity.Property(e => e.ProductVendorId).HasColumnName("ProductVendorID");
             entity.Property(e => e.RepliedBy).HasMaxLength(50);
             entity.Property(e => e.Shift).HasMaxLength(50);
             entity.Property(e => e.Status).HasMaxLength(20);
@@ -146,8 +146,8 @@ public partial class CncssystemContext : DbContext
                 .HasForeignKey(d => d.DescriptionId)
                 .HasConstraintName("FK_tblTransactions_tblDescriptions");
 
-            entity.HasOne(d => d.ProductVender).WithMany(p => p.TblTransactions)
-                .HasForeignKey(d => d.ProductVenderId)
+            entity.HasOne(d => d.ProductVendor).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.ProductVendorId)
                 .HasConstraintName("FK_tblTransactions_tblProductVendor");
         });
 

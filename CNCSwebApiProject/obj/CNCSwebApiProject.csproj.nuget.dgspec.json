@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\CNCSwebApiProject.csproj": {}
+    "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\CNCSwebApiProject.csproj": {
+    "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
+        "projectUniqueName": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
         "projectName": "CNCSwebApiProject",
-        "projectPath": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
+        "projectPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
         "packagesPath": "C:\\Users\\robert.verano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\robert.verano\\source\\repos\\CNCSwebApiProject\\CNCSwebApiProject\\obj\\",
+        "outputPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\CNCSwebApiProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

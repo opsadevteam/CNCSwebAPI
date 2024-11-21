@@ -61,7 +61,7 @@ namespace CNCSwebApiProject.Controllers
                 return BadRequest(ModelState);
 
             var transactions = _transactionRepository.GetTransactions()
-                .Where(c => c.CustomerId.Trim().ToUpper() == transactionCreate.CustomerId.Trim().ToUpper())
+                .Where(c => c.TransactionId.Trim().ToUpper() == transactionCreate.TransactionId.Trim().ToUpper())
                 .FirstOrDefault();
 
             if (transactions != null)
