@@ -30,6 +30,9 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITransaction, TransactionRepository>();
+builder.Services.AddScoped<IProductVendor, ProductVendorRepository>();
+builder.Services.AddScoped<IDescription, DescriptionRepository>();
+builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
 
 var app = builder.Build();
 

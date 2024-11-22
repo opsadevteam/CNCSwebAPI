@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Cors;
 namespace CNCSwebApiProject.Controllers
 {
     [EnableCors("AllowOrigin")]
-
+    //test commit
     [Route("api/v1/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -61,7 +61,7 @@ namespace CNCSwebApiProject.Controllers
                 return BadRequest(ModelState);
 
             var transactions = _transactionRepository.GetTransactions()
-                .Where(c => c.CustomerId.Trim().ToUpper() == transactionCreate.CustomerId.Trim().ToUpper())
+                .Where(c => c.TransactionId.Trim().ToUpper() == transactionCreate.TransactionId.Trim().ToUpper())
                 .FirstOrDefault();
 
             if (transactions != null)

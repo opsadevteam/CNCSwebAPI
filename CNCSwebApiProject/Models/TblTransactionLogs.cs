@@ -17,7 +17,7 @@ public partial class TblTransactionLogs
 
     public long? Duration { get; set; }
 
-    public int? ProductVenderId { get; set; }
+    public int? ProductVendorId { get; set; }
 
     public int? DescriptionId { get; set; }
 
@@ -45,5 +45,5 @@ public partial class TblTransactionLogs
 
     public virtual TblDescriptions? Description { get; set; }
 
-    public virtual TblProductVendor? ProductVender { get; set; }
+    public virtual TblProductVendor? ProductVendor { get; set; }
 }
