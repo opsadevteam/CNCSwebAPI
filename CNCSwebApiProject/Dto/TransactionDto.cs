@@ -14,7 +14,7 @@
 
         public long? Duration { get; set; }
 
-        public int? ProductVenderId { get; set; }
+        public int? ProductVendorId { get; set; }
 
         public int? DescriptionId { get; set; }
 

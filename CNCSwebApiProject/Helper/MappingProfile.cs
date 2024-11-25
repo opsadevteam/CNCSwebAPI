@@ -12,7 +12,14 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblTransactions, TransactionDto>();
             CreateMap<TransactionDto, TblTransactions>();
 
+            CreateMap<TblProductVendor, ProductVendorDto>();
+            CreateMap<ProductVendorDto, TblProductVendor>();
 
+            CreateMap<TblDescriptions, DescriptionDto>();
+            CreateMap<DescriptionDto, TblDescriptions>();
+
+            CreateMap<TblUserAccount, UserAccountDto>();
+            CreateMap<UserAccountDto, TblUserAccount>();
         }
     }
 }
