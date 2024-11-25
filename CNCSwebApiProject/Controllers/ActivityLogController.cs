@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CNCSapi.Controllers
 {
     [EnableCors("AllowOrigin")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ActivityLogController(IActivityLogRepository _activityLogRepository) : ControllerBase
     {
