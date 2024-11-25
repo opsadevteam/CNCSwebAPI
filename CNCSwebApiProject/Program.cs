@@ -1,3 +1,7 @@
+using CNCSapi.Interface;
+using CNCSapi.Repository;
+using CNCSproject.Interface;
+using CNCSproject.Repository;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using CNCSwebApiProject.Repository;
@@ -32,7 +36,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITransaction, TransactionRepository>();
 builder.Services.AddScoped<IProductVendor, ProductVendorRepository>();
 builder.Services.AddScoped<IDescription, DescriptionRepository>();
-builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
+builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
 
 var app = builder.Build();
 

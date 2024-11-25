@@ -1,25 +1,14 @@
-﻿namespace CNCSwebApiProject.Dto
-{
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CNCSwebApiProject.Dto;
+
     public class UserAccountDto
     {
-        public int Id { get; set; }
-
-        public string? FullName { get; set; }
-
-        public string? Username { get; set; }
-
-        public string? Password { get; set; }
-
-        public string? UserGroup { get; set; }
-
-        public string? Status { get; set; }
-
-        public string? AddedBy { get; set; }
-
-        public DateTime? DateAdded { get; set; }
-
-        public bool? IsDeleted { get; set; }
-
-        public string? LogId { get; set; }
+    public int Id { get; set; }
+    public required string FullName { get; set; }
+    public required string Username { get; set; }
+    public required string Password { get; set; }
+    public required  string UserGroup { get; set; }
+    public  required string Status { get; set; }
+    public DateTime? DateAdded { get; set; }
     }
-}
