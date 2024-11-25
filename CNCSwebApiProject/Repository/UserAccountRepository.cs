@@ -1,55 +1,63 @@
-﻿using CNCSwebApiProject.Interface;
+﻿using System;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using CNCSproject.Interface;
+using CNCSwebApiProject.Dto;
 using CNCSwebApiProject.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 
-namespace CNCSwebApiProject.Repository
+namespace CNCSproject.Repository;
+
+public class UserAccountRepository(CncssystemContext context, IMapper mapper) : IUserAccountRepository
 {
-    public class UserAccountRepository : IUserAccount
+    public async Task<IEnumerable<UserAccountDto>> GetAllAsync()
     {
-        private readonly CncssystemContext _context;
+        return await context.TblUserAccount
+        .Where(user => user.IsDeleted == false)
+        .ProjectTo<UserAccountDto>(mapper.ConfigurationProvider)
+        .ToListAsync();
+    }
 
-        public UserAccountRepository(CncssystemContext context)
-        {
-            _context = context;
-        }
-        public bool CreateUserAccount(TblUserAccount userAccount)
-        {
-            _context.Add(userAccount);
+    public async Task<UserAccountDto?> GetAsync(int id)
+    {
+        return await context.TblUserAccount
+        .Where(a => a.Id == id)
+        .ProjectTo<UserAccountDto>(mapper.ConfigurationProvider)
+        .SingleOrDefaultAsync();
+    }
 
-            return Save();
-        }
+    public async Task<bool> AddAsync(TblUserAccount userAccount)
+    {
+        await context.TblUserAccount.AddAsync(userAccount);
+        return await  SaveAllAsync();
+    }
 
-        public bool DeleteUserAccount(TblUserAccount userAccount)
-        {
-            _context.Remove(userAccount);
+     public async Task<bool> UpdateAsync(TblUserAccount userAccount)
+    {
+        context.TblUserAccount.Update(userAccount);
+        return await SaveAllAsync();
+    }
 
-            return Save();
-        }
+    public async Task<bool> DeleteAsync(int id)
+    {
+        var deleted = await context.TblUserAccount
+            .Where(a => a.Id == id)
+            .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
-        public TblUserAccount GetUserAccount(int id)
-        {
-            return _context.TblUserAccount.Where(e => e.Id == id).FirstOrDefault();
-        }
+        return deleted > 0;
+    }
 
-        public ICollection<TblUserAccount> GetUserAccounts()
-        {
-            return _context.TblUserAccount.ToList();
-        }
+    public async Task<bool> IsUserExistsAsync(string Username)
+    {
 
-        public bool Save()
-        {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
-        }
+        return await context.TblUserAccount
+            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.IsDeleted == false);
+    }
 
-        public bool UpdateUserAccount(TblUserAccount userAccount)
-        {
-            _context.Update(userAccount);
-            return Save();
-        }
 
-        public bool UserAccountExists(int userAccountId)
-        {
-            return _context.TblUserAccount.Any(p => p.Id == userAccountId);
-        }
+    public async Task<bool> SaveAllAsync()
+    {
+        return await context.SaveChangesAsync() > 0;
     }
 }
