@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Cors;
+using AutoMapper;
 using CNCSproject.Interface;
 using CNCSwebApiProject.Dto;
 using CNCSwebApiProject.Models;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CNCSproject.Controllers;
 
+[EnableCors("AllowOrigin")]
 [Route("api/[controller]")]
 [ApiController]
 public class UserAccountController(IUserAccountRepository _userAccountRepository) : ControllerBase

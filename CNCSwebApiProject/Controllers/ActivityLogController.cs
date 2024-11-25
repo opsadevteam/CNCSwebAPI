@@ -1,21 +1,24 @@
+using CNCSapi.Interface;
 using CNCSapi.Repository;
 using CNCSwebApiProject.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CNCSapi.Controllers
 {
+    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ActivityLogController(ActivityLogRepository _activityLogRepository) : ControllerBase
+    public class ActivityLogController(IActivityLogRepository _activityLogRepository) : ControllerBase
     {
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TblActivityLog>>> GetActivityLogs()
         {
-            var users = await _activityLogRepository.GetAllAsync();
+            var logs = await _activityLogRepository.GetAllAsync();
 
-            return users.Any() ?
-                Ok(users) :
+            return logs.Any() ?
+                Ok(logs) :
                 NotFound("No data found.");
         }
     }
