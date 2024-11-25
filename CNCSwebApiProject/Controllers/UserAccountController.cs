@@ -10,25 +10,25 @@ namespace CNCSproject.Controllers;
 [EnableCors("AllowOrigin")]
 [Route("api/[controller]")]
 [ApiController]
-public class UserAccountController(IUserAccountRepository _userAccountRepository) : ControllerBase
+public class UserAccountController(IUserAccountRepository _userAccountRepository, IMapper mapper) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserAccountDto>>> GetUserAccountsAsync()
     {
-        var users = await _userAccountRepository.GetAllAsync();
+        var userDtoList = mapper.Map<List<UserAccountDto>>(await _userAccountRepository.GetAllAsync());
 
-        return users.Any() ?
-            Ok(users) :
+        return userDtoList.Any() ?
+            Ok(userDtoList) :
             NotFound("No user accounts found.");
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<UserAccountDto>> GetUserAccountAsync(int id)
     {
-        var user = await _userAccountRepository.GetAsync(id);
+        var userDto = mapper.Map<UserAccountDto>(await _userAccountRepository.GetAsync(id));
 
-        return user is not null ?
-            Ok(user) :
+        return userDto is not null ?
+            Ok(userDto) :
             NotFound($"User with ID {id} not found.");
     }
 

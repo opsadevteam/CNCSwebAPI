@@ -9,21 +9,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CNCSproject.Repository;
 
-public class UserAccountRepository(CncssystemContext context, IMapper mapper) : IUserAccountRepository
+public class UserAccountRepository(CncssystemContext context) : IUserAccountRepository
 {
-    public async Task<IEnumerable<UserAccountDto>> GetAllAsync()
+    public async Task<IEnumerable<TblUserAccount>> GetAllAsync()
     {
         return await context.TblUserAccount
         .Where(user => user.IsDeleted == false)
-        .ProjectTo<UserAccountDto>(mapper.ConfigurationProvider)
         .ToListAsync();
     }
 
-    public async Task<UserAccountDto?> GetAsync(int id)
+    public async Task<TblUserAccount?> GetAsync(int id)
     {
         return await context.TblUserAccount
         .Where(a => a.Id == id)
-        .ProjectTo<UserAccountDto>(mapper.ConfigurationProvider)
         .SingleOrDefaultAsync();
     }
 

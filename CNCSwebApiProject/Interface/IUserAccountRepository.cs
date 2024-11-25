@@ -6,8 +6,8 @@ namespace CNCSproject.Interface;
 
 public interface IUserAccountRepository
 {
-    Task<IEnumerable<UserAccountDto>> GetAllAsync(); //get all user account
-    Task<UserAccountDto?> GetAsync(int id); //get single user account
+    Task<IEnumerable<TblUserAccount>> GetAllAsync(); //get all user account
+    Task<TblUserAccount?> GetAsync(int id); //get single user account
     Task<bool> AddAsync(TblUserAccount userAccount); // Add new user account
     Task<bool> UpdateAsync(TblUserAccount userAccount); // Update existing user account
     Task<bool> DeleteAsync(int id); // Delete user account by ID
