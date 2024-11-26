@@ -1,9 +1,10 @@
 ﻿using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CNCSwebApiProject.Repository
 {
-    public class TransactionRepository : ITransaction
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly CncssystemContext _context;
 
@@ -11,45 +12,49 @@ namespace CNCSwebApiProject.Repository
         {
             _context = context;
         }
-        public bool CreateTransaction(TblTransactions transaction)
-        {
-            _context.Add(transaction);
 
-            return Save();
+        public async Task<bool> CreateTransactionAsync(TblTransactions transaction)
+        {
+            await _context.TblTransactions.AddAsync(transaction);
+            return await SaveAsync();
         }
 
-        public bool DeleteTransaction(TblTransactions transaction)
+        public async Task<bool> DeleteTransactionAsync(TblTransactions transaction)
         {
-            _context.Remove(transaction);
-
-            return Save();
+            var existingTransaction = await _context.TblTransactions.FindAsync(transaction.Id);
+            if (existingTransaction != null)
+            {
+                _context.Entry(existingTransaction).State = EntityState.Detached;
+            }
+            _context.TblTransactions.Remove(transaction);
+            return await SaveAsync();
         }
 
-        public TblTransactions GetTransaction(int id)
+        public async Task<TblTransactions> GetTransactionAsync(int id)
         {
-            return _context.TblTransactions.Where(e => e.Id == id).FirstOrDefault();
+            return await _context.TblTransactions.FindAsync(id);
         }
 
-        public ICollection<TblTransactions> GetTransactions()
+        public async Task<ICollection<TblTransactions>> GetTransactionsAsync()
         {
-            return _context.TblTransactions.ToList();
+            return await _context.TblTransactions.ToListAsync();
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            var changes = await _context.SaveChangesAsync();
+            return changes > 0;
         }
 
-        public bool TransactionExists(int transactionId)
+        public async Task<bool> TransactionExistsAsync(int transactionId)
         {
-            return _context.TblTransactions.Any(p => p.Id == transactionId);
+            return await _context.TblTransactions.AnyAsync(t => t.Id == transactionId);
         }
 
-        public bool UpdateTransaction(TblTransactions transaction)
+        public async Task<bool> UpdateTransactionAsync(TblTransactions transaction)
         {
-            _context.Update(transaction);
-            return Save();
+            _context.TblTransactions.Update(transaction);
+            return await SaveAsync();
         }
     }
 }

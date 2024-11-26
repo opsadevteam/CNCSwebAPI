@@ -5,6 +5,9 @@ using CNCSproject.Repository;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using CNCSwebApiProject.Repository;
+using CNCSwebApiProject.Services.DescriptionService;
+using CNCSwebApiProject.Services.ProductVendorService;
+using CNCSwebApiProject.Services.TransactionService;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -33,9 +36,12 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddControllers().AddJsonOptions(x =>
                     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<ITransaction, TransactionRepository>();
-builder.Services.AddScoped<IProductVendor, ProductVendorRepository>();
-builder.Services.AddScoped<IDescription, DescriptionRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IProductVendorRepository, ProductVendorRepository>();
+builder.Services.AddScoped<IProductVendorService, ProductVendorService>();
+builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
+builder.Services.AddScoped<IDescriptionService, DescriptionService>();
 builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
 builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
 
