@@ -5,7 +5,7 @@ using CNCSwebApiProject.Dto;
 using CNCSwebApiProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CNCSproject.Controllers;
+namespace CNCSwebApiProject.Controllers;
 
 [EnableCors("AllowOrigin")]
 [Route("api/v1/[controller]")]
