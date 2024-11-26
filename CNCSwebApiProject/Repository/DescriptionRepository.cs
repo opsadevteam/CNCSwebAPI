@@ -1,9 +1,10 @@
 ﻿using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CNCSwebApiProject.Repository
 {
-    public class DescriptionRepository : IDescription
+    public class DescriptionRepository : IDescriptionRepository
     {
         private readonly CncssystemContext _context;
 
@@ -12,45 +13,48 @@ namespace CNCSwebApiProject.Repository
             _context = context;
         }
 
-        public bool CreateDescription(TblDescriptions description)
+        public async Task<bool> CreateDescriptionAsync(TblDescriptions description)
         {
-            _context.Add(description);
-
-            return Save();
+            await _context.TblDescriptions.AddAsync(description);
+            return await SaveAsync();
         }
 
-        public bool DeleteDescription(TblDescriptions description)
+        public async Task<bool> DeleteDescriptionAsync(TblDescriptions description)
         {
-            _context.Remove(description);
-
-            return Save();
+            var existingDescription = await _context.TblDescriptions.FindAsync(description.Id);
+            if (existingDescription != null)
+            {
+                _context.Entry(existingDescription).State = EntityState.Detached;
+            }
+            _context.TblDescriptions.Remove(description);
+            return await SaveAsync();
         }
 
-        public bool DescriptionExists(int descriptionId)
+        public async Task<bool> DescriptionExistsAsync(int descriptionId)
         {
-            return _context.TblDescriptions.Any(p => p.Id == descriptionId);
+            return await _context.TblDescriptions.AnyAsync(t => t.Id == descriptionId);
         }
 
-        public TblDescriptions GetDescription(int id)
+        public async Task<TblDescriptions> GetDescriptionAsync(int id)
         {
-            return _context.TblDescriptions.Where(e => e.Id == id).FirstOrDefault();
+            return await _context.TblDescriptions.FindAsync(id);
         }
 
-        public ICollection<TblDescriptions> GetDescriptions()
+        public async Task<ICollection<TblDescriptions>> GetDescriptionsAsync()
         {
-            return _context.TblDescriptions.ToList();
+            return await _context.TblDescriptions.ToListAsync();
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            var changes = await _context.SaveChangesAsync();
+            return changes > 0;
         }
 
-        public bool UpdateDescription(TblDescriptions description)
+        public async Task<bool> UpdateDescriptionAsync(TblDescriptions description)
         {
-            _context.Update(description);
-            return Save();
+            _context.TblDescriptions.Update(description);
+            return await SaveAsync();
         }
     }
 }

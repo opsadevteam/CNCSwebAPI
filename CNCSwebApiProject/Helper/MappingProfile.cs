@@ -19,7 +19,6 @@ namespace CNCSwebApiProject.Helper
             CreateMap<DescriptionDto, TblDescriptions>();
 
             CreateMap<TblUserAccount, UserAccountDto>();
-            CreateMap<UserAccountDto, TblUserAccount>();
         }
     }
 }

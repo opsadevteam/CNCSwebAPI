@@ -5,125 +5,113 @@ using CNCSwebApiProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using CNCSwebApiProject.Repository;
+using CNCSwebApiProject.Services.ProductVendorService;
+
 
 namespace CNCSwebApiProject.Controllers
 {
     [EnableCors("AllowOrigin")]
-
     [Route("api/v1/[controller]")]
     [ApiController]
     public class ProductVendorController : ControllerBase
     {
-        private readonly IProductVendor _productVendorRepository;
-        private readonly IMapper _mapper;
+        private readonly IProductVendorService _productVendorService;
 
-        public ProductVendorController(IProductVendor productVendorRepository, IMapper mapper)
+        public ProductVendorController(IProductVendorService productVendorService)
         {
-            _productVendorRepository = productVendorRepository;
-            _mapper = mapper;
+            _productVendorService = productVendorService;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<IProductVendor>))]
-        public IActionResult GetProductVendors()
+        [ProducesResponseType(200, Type = typeof(IEnumerable<IProductVendorService>))]
+        public async Task<IActionResult> GetProductVendors()
         {
-            var productVendors = _mapper.Map<List<ProductVendorDto>>(_productVendorRepository.GetProductVendors());
-
+            var productVendorsDto = await _productVendorService.GetProductVendorsAsync();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            return Ok(productVendors);
+            return Ok(productVendorsDto);
         }
 
         [HttpGet("{productVendorId}")]
         [ProducesResponseType(200, Type = typeof(TblProductVendor))]
         [ProducesResponseType(400)]
-        public IActionResult GetProductVendor(int productVendorId)
+        public async Task<IActionResult> GetProductVendor(int productVendorId)
         {
-            if (!_productVendorRepository.ProductVendorExists(productVendorId))
+            if (!await _productVendorService.ProductVendorExistsAsync(productVendorId))
                 return NotFound();
-
-            var productVendor = _mapper.Map<ProductVendorDto>(_productVendorRepository.GetProductVendor(productVendorId));
-
+            var productVendorDto = await _productVendorService.GetProductVendorAsync(productVendorId);
+            if (productVendorDto == null)
+            {
+                return NotFound();
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            return Ok(productVendor);
+            return Ok(productVendorDto);
         }
-
 
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult CreateProductVendor([FromBody] ProductVendorDto productVendorCreate)
+        public async Task<IActionResult> CreateProductVendor([FromBody] ProductVendorDto productVendorDto)
         {
-            if (productVendorCreate == null)
+            if (productVendorDto == null)
+            {
                 return BadRequest(ModelState);
-
-            var productVendors = _productVendorRepository.GetProductVendors()
-                .Where(c => c.ProductVendor.Trim().ToUpper() == productVendorCreate.ProductVendor.Trim().ToUpper())
-                .FirstOrDefault();
-
-            if (productVendors != null)
+            }
+            var result = await _productVendorService.CreateProductVendorAsync(productVendorDto);
+            if (!result)
             {
                 ModelState.AddModelError("", "ProductVendor already exists");
                 return StatusCode(422, ModelState);
             }
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var productVendorMap = _mapper.Map<TblProductVendor>(productVendorCreate);
-
-            if (!_productVendorRepository.CreateProductVendor(productVendorMap))
+            if (result)
             {
-                ModelState.AddModelError("", "Something went wrong while saving");
-                return StatusCode(500, ModelState);
+                return CreatedAtAction(nameof(GetProductVendor), new { productVendorId = productVendorDto.Id }, productVendorDto);
             }
-            return NoContent();
+            return StatusCode(500, "A problem occurred while handling your request.");
         }
+
 
         [HttpPut("{productVendorId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public IActionResult UpdateProductVendor(int productVendorId, [FromBody] ProductVendorDto updatedProductVendor)
+        public async Task<IActionResult> UpdateProductVendor(int productVendorId, [FromBody] ProductVendorDto updatedProductVendor)
         {
-
             if (updatedProductVendor == null)
                 return BadRequest(ModelState);
             if (productVendorId != updatedProductVendor.Id)
                 return BadRequest(ModelState);
-            if (!_productVendorRepository.ProductVendorExists(productVendorId))
+            if (!await _productVendorService.ProductVendorExistsAsync(productVendorId))
                 return NotFound();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var productVendorMap = _mapper.Map<TblProductVendor>(updatedProductVendor);
-            if (!_productVendorRepository.UpdateProductVendor(productVendorMap))
+            if (!await _productVendorService.UpdateProductVendorAsync(updatedProductVendor))
             {
-                ModelState.AddModelError("", "Something went wrong Updating Product Vendor");
+                ModelState.AddModelError("", "Something went wrong Updating Transaction");
                 return StatusCode(500, ModelState);
             }
             return NoContent();
         }
 
-
         [HttpDelete("{productVendorId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public IActionResult DeleteProductVendor(int productVendorId)
+        public async Task<IActionResult> DeleteProductVendor(int productVendorId)
         {
-            if (!_productVendorRepository.ProductVendorExists(productVendorId))
+            if (!await _productVendorService.ProductVendorExistsAsync(productVendorId))
             {
                 return NotFound();
             }
-
-            var productVendorToDelete = _productVendorRepository.GetProductVendor(productVendorId);
-            if (!_productVendorRepository.DeleteProductVendor(productVendorToDelete))
+            var productVendorToDelete = await _productVendorService.GetProductVendorAsync(productVendorId);
+            if (!await _productVendorService.DeleteProductVendorAsync(productVendorToDelete))
 
             {
-                ModelState.AddModelError("", "Something went wrong deleting Product Vendor");
+                ModelState.AddModelError("", "Something went wrong deleting ProductVendor");
             }
             return NoContent();
         }
