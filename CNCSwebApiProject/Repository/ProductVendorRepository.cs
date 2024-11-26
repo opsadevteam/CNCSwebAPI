@@ -1,9 +1,10 @@
 ﻿using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CNCSwebApiProject.Repository
 {
-    public class ProductVendorRepository : IProductVendor
+    public class ProductVendorRepository : IProductVendorRepository
     {
         private readonly CncssystemContext _context;
 
@@ -11,46 +12,48 @@ namespace CNCSwebApiProject.Repository
         {
             _context = context;
         }
-
-        public bool CreateProductVendor(TblProductVendor productVendor)
+        public async Task<bool> CreateProductVendorAsync(TblProductVendor productVendor)
         {
-            _context.Add(productVendor);
-
-            return Save();
+            await _context.TblProductVendor.AddAsync(productVendor);
+            return await SaveAsync();
         }
 
-        public bool DeleteProductVendor(TblProductVendor productVendor)
+        public async Task<bool> DeleteProductVendorAsync(TblProductVendor productVendor)
         {
-            _context.Remove(productVendor);
-
-            return Save();
+            var existingProductVendor = await _context.TblProductVendor.FindAsync(productVendor.Id);
+            if (existingProductVendor != null)
+            {
+                _context.Entry(existingProductVendor).State = EntityState.Detached;
+            }
+            _context.TblProductVendor.Remove(productVendor);
+            return await SaveAsync();
         }
 
-        public TblProductVendor GetProductVendor(int id)
+        public async Task<TblProductVendor> GetProductVendorAsync(int id)
         {
-            return _context.TblProductVendor.Where(e => e.Id == id).FirstOrDefault();
+            return await _context.TblProductVendor.FindAsync(id);
         }
 
-        public ICollection<TblProductVendor> GetProductVendors()
+        public async Task<ICollection<TblProductVendor>> GetProductVendorsAsync()
         {
-            return _context.TblProductVendor.ToList();
+            return await _context.TblProductVendor.ToListAsync();
         }
 
-        public bool ProductVendorExists(int productVendorId)
+        public async Task<bool> ProductVendorExistsAsync(int productVendorId)
         {
-            return _context.TblProductVendor.Any(p => p.Id == productVendorId);
+            return await _context.TblProductVendor.AnyAsync(t => t.Id == productVendorId);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            var changes = await _context.SaveChangesAsync();
+            return changes > 0;
         }
 
-        public bool UpdateProductVendor(TblProductVendor productVendor)
+        public async Task<bool> UpdateProductVendorAsync(TblProductVendor productVendor)
         {
-            _context.Update(productVendor);
-            return Save();
+            _context.TblProductVendor.Update(productVendor);
+            return await SaveAsync();
         }
     }
 }
