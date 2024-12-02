@@ -18,7 +18,11 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblDescriptions, DescriptionDto>();
             CreateMap<DescriptionDto, TblDescriptions>();
 
-            CreateMap<TblUserAccount, UserAccountDto>();
+            CreateMap<TblUserAccount, UserAccountGetDto>();
+            CreateMap<TblUserAccount, UserAccountUpsertDto>().ReverseMap();
+
+            CreateMap<TblActivityLog, ActivityLogGetDto>();
+            CreateMap<TblActivityLog, ActivityLogInsertDto>().ReverseMap();
 
             // Mapping for TblTransactions to TransactionDto
             CreateMap<TblTransactions, EmailRecordsDto>()
