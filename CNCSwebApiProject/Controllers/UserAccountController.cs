@@ -11,25 +11,25 @@ namespace CNCSwebApiProject.Controllers;
 [EnableCors("AllowOrigin")]
 [Route("api/v1/[controller]")]
 [ApiController]
-public class UserAccountController(IUserAccountService _UserAccountService, IMapper mapper) : ControllerBase
+public class UserAccountController(IUserAccountService _UserAccountService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserAccountGetDto>>> GetUserAccountsAsync()
     {
-        var userDtoList = mapper.Map<List<UserAccountGetDto>>(await _UserAccountService.GetAllAsync());
+        var obj = await _UserAccountService.GetAllAsync();
 
-        return userDtoList.Any() ?
-            Ok(userDtoList) :
+        return obj.Any() ?
+            Ok(obj) :
             NotFound("No user accounts found.");
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<UserAccountGetDto>> GetUserAccountAsync(int id)
     {
-        var userDto = mapper.Map<UserAccountGetDto>(await _UserAccountService.GetAsync(id));
+        var obj = await _UserAccountService.GetAsync(id);
 
-        return userDto is not null ?
-            Ok(userDto) :
+        return obj is not null ?
+            Ok(obj) :
             NotFound($"User with ID {id} not found.");
     }
 
