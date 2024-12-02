@@ -15,6 +15,7 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
     {
         return await context.TblUserAccount
         .Where(user => user.IsDeleted == false)
+        .OrderByDescending(user => user.Id)
         .ToListAsync();
     }
 
