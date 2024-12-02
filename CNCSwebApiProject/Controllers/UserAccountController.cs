@@ -14,9 +14,9 @@ namespace CNCSwebApiProject.Controllers;
 public class UserAccountController(IUserAccountService _UserAccountService, IMapper mapper) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserAccountDisplayDto>>> GetUserAccountsAsync()
+    public async Task<ActionResult<IEnumerable<UserAccountGetDto>>> GetUserAccountsAsync()
     {
-        var userDtoList = mapper.Map<List<UserAccountDisplayDto>>(await _UserAccountService.GetAllAsync());
+        var userDtoList = mapper.Map<List<UserAccountGetDto>>(await _UserAccountService.GetAllAsync());
 
         return userDtoList.Any() ?
             Ok(userDtoList) :
@@ -24,9 +24,9 @@ public class UserAccountController(IUserAccountService _UserAccountService, IMap
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserAccountDisplayDto>> GetUserAccountAsync(int id)
+    public async Task<ActionResult<UserAccountGetDto>> GetUserAccountAsync(int id)
     {
-        var userDto = mapper.Map<UserAccountDisplayDto>(await _UserAccountService.GetAsync(id));
+        var userDto = mapper.Map<UserAccountGetDto>(await _UserAccountService.GetAsync(id));
 
         return userDto is not null ?
             Ok(userDto) :

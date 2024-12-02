@@ -2,7 +2,7 @@
 
 namespace CNCSwebApiProject.Dto;
 
-public class UserAccountDisplayDto
+public class UserAccountGetDto
     {
     public int Id { get; set; }
     public required string FullName { get; set; }

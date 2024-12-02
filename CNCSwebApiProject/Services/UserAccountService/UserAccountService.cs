@@ -18,16 +18,16 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
         return await _userAccountRepository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<UserAccountDisplayDto>> GetAllAsync()
+    public async Task<IEnumerable<UserAccountGetDto>> GetAllAsync()
     {
         var obj = await _userAccountRepository.GetAllAsync();
-        return mapper.Map<IEnumerable<UserAccountDisplayDto>>(obj);
+        return mapper.Map<IEnumerable<UserAccountGetDto>>(obj);
     }
 
-    public async Task<UserAccountDisplayDto?> GetAsync(int id)
+    public async Task<UserAccountGetDto?> GetAsync(int id)
     {
         var obj = await _userAccountRepository.GetAsync(id);
-        return mapper.Map<UserAccountDisplayDto>(obj);
+        return mapper.Map<UserAccountGetDto>(obj);
     }
 
     public async Task<bool> IsUserExistsAsync(string Username)
