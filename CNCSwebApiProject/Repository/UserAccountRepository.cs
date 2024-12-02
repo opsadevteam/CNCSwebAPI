@@ -23,6 +23,7 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
     {
         return await context.TblUserAccount
         .Where(a => a.Id == id)
+        .Where(a => a.IsDeleted == false)
         .SingleOrDefaultAsync();
     }
 
