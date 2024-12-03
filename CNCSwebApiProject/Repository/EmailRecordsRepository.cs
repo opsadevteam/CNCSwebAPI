@@ -23,13 +23,13 @@ namespace CNCSwebApiProject.Repository
                                   .Include(t => t.Description)
                                   .ToListAsync();
         }
-
+    
         public async Task<TblTransactions> GetTransactionAsync(int id)
         {
             return await _context.TblTransactions
                                   .Where(e => e.Id == id)
                                   .FirstOrDefaultAsync();
-        }
+        }  
 
         public async Task<bool> SaveAsync()
         {
