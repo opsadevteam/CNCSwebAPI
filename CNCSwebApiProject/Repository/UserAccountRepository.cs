@@ -48,11 +48,11 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
         return deleted > 0;
     }
 
-    public async Task<bool> IsUserExistsAsync(string Username)
+    public async Task<bool> IsUserExistsAsync(string Username, int id)
     {
 
         return await context.TblUserAccount
-            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.IsDeleted == false);
+            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.Id != id && x.IsDeleted == false);
     }
 
 

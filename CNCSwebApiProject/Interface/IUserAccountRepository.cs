@@ -12,5 +12,5 @@ public interface IUserAccountRepository
     Task<bool> UpdateAsync(TblUserAccount userAccount); // Update existing user account
     Task<bool> DeleteAsync(int id); // Delete user account by ID
     Task<bool> SaveAllAsync(); // Save changes to the database
-    Task<bool> IsUserExistsAsync(string Username);
+    Task<bool> IsUserExistsAsync(string Username, int id);
 }

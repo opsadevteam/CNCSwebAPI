@@ -39,7 +39,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
         if (newUser is null) 
             return BadRequest("Invalid user account data.");
 
-            if (await _UserAccountService.IsUserExistsAsync(newUser.Username!))
+            if (await _UserAccountService.IsUserExistsAsync(newUser.Username!, 0))
                 return Conflict("Username is already taken.");
 
         var isAdded = await _UserAccountService.AddAsync(newUser);
@@ -55,7 +55,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
         if (id != userAccount.Id)
             return BadRequest("User ID mismatch.");
 
-        if (await _UserAccountService.IsUserExistsAsync(userAccount.Username!))
+        if (await _UserAccountService.IsUserExistsAsync(userAccount.Username!, userAccount.Id!))
             return Conflict("Username is already taken.");
 
         var isUpdated = await _UserAccountService.UpdateAsync(userAccount);

@@ -30,9 +30,9 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
         return mapper.Map<UserAccountGetDto>(obj);
     }
 
-    public async Task<bool> IsUserExistsAsync(string Username)
+    public async Task<bool> IsUserExistsAsync(string Username, int id)
     {
-        return await _userAccountRepository.IsUserExistsAsync(Username);
+        return await _userAccountRepository.IsUserExistsAsync(Username, id);
     }
     public async Task<bool> UpdateAsync(UserAccountUpsertDto userAccount)
     {
