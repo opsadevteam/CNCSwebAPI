@@ -1,9 +1,7 @@
 namespace CNCSwebApiProject.Dto;
 
-public class UserAccountUpsertDto 
-    {
-    public int Id { get; set; }
-
+public class UserAccountCreateDto
+{
     public string? FullName { get; set; }
 
     public string? Username { get; set; }
@@ -21,4 +19,4 @@ public class UserAccountUpsertDto
     public bool? IsDeleted { get; set; }
 
     public string? LogId { get; set; }
-    }
+}

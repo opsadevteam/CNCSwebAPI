@@ -8,7 +8,7 @@ namespace CNCSwebApiProject.Services.UserAccountService;
 
 public class UserAccountService(IUserAccountRepository _userAccountRepository, IMapper mapper) : IUserAccountService
 {
-    public async Task<bool> AddAsync(UserAccountUpsertDto userAccount)
+    public async Task<bool> AddAsync(UserAccountCreateDto userAccount)
     {
         return await _userAccountRepository.AddAsync(mapper.Map<TblUserAccount>(userAccount));
     }
@@ -18,24 +18,34 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
         return await _userAccountRepository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<UserAccountGetDto>> GetAllAsync()
+    public async Task<IEnumerable<UserAccountListDto>> GetAllAsync()
     {
         var obj = await _userAccountRepository.GetAllAsync();
-        return mapper.Map<IEnumerable<UserAccountGetDto>>(obj);
+        return mapper.Map<IEnumerable<UserAccountListDto>>(obj);
     }
 
-    public async Task<UserAccountGetDto?> GetAsync(int id)
+    public async Task<UserAccountGetAndUpdateDto?> GetAsync(int id)
     {
         var obj = await _userAccountRepository.GetAsync(id);
-        return mapper.Map<UserAccountGetDto>(obj);
+        return mapper.Map<UserAccountGetAndUpdateDto>(obj);
     }
 
     public async Task<bool> IsUserExistsAsync(string Username, int id)
     {
         return await _userAccountRepository.IsUserExistsAsync(Username, id);
     }
-    public async Task<bool> UpdateAsync(UserAccountUpsertDto userAccount)
+    public async Task<bool> UpdateAsync(UserAccountGetAndUpdateDto userAccount)
     {
-        return await _userAccountRepository.UpdateAsync(mapper.Map<TblUserAccount>(userAccount));
+        var obj = await _userAccountRepository.GetAsync(userAccount.Id);
+
+        if(obj is null) return false;
+
+        obj.FullName = userAccount.FullName;
+        obj.Username = userAccount.Username;
+        obj.Password = userAccount.Password;
+        obj.UserGroup = userAccount.UserGroup;
+        obj.Status = userAccount.Status;
+
+        return await _userAccountRepository.UpdateAsync(obj);
     }
 }

@@ -14,7 +14,7 @@ namespace CNCSwebApiProject.Controllers;
 public class UserAccountController(IUserAccountService _UserAccountService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserAccountGetDto>>> GetUserAccountsAsync()
+    public async Task<ActionResult<IEnumerable<UserAccountListDto>>> GetUserAccountsAsync()
     {
         var obj = await _UserAccountService.GetAllAsync();
 
@@ -24,7 +24,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserAccountGetDto>> GetUserAccountAsync(int id)
+    public async Task<ActionResult<UserAccountGetAndUpdateDto>> GetUserAccountAsync(int id)
     {
         var obj = await _UserAccountService.GetAsync(id);
 
@@ -34,7 +34,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddUserAccountAsync(UserAccountUpsertDto newUser)
+    public async Task<IActionResult> AddUserAccountAsync(UserAccountCreateDto newUser)
     {
         if (newUser is null) 
             return BadRequest("Invalid user account data.");
@@ -50,7 +50,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
 
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUserAccountAsync(int id, UserAccountUpsertDto userAccount)
+    public async Task<IActionResult> UpdateUserAccountAsync(int id, UserAccountGetAndUpdateDto userAccount)
     {
         if (id != userAccount.Id)
             return BadRequest("User ID mismatch.");
