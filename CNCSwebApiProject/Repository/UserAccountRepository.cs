@@ -56,7 +56,6 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
             .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.Id != id && x.IsDeleted == false);
     }
 
-
     public async Task<bool> SaveAllAsync()
     {
         return await context.SaveChangesAsync() > 0;

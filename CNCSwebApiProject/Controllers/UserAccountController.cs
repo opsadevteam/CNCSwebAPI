@@ -58,7 +58,7 @@ public class UserAccountController(IUserAccountService _UserAccountService) : Co
         if (await _UserAccountService.IsUserExistsAsync(userAccount.Username!, userAccount.Id!))
             return Conflict("Username is already taken.");
 
-        var isUpdated = await _UserAccountService.UpdateAsync(userAccount);
+        var isUpdated = await _UserAccountService.UpdateDetailsAsync(userAccount);
 
         return isUpdated ?
             NoContent() : 

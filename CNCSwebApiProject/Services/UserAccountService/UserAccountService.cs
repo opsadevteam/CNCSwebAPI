@@ -34,7 +34,7 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
     {
         return await _userAccountRepository.IsUserExistsAsync(Username, id);
     }
-    public async Task<bool> UpdateAsync(UserAccountGetAndUpdateDto userAccount)
+    public async Task<bool> UpdateDetailsAsync(UserAccountGetAndUpdateDto userAccount)
     {
         var obj = await _userAccountRepository.GetAsync(userAccount.Id);
 
@@ -45,6 +45,17 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
         obj.Password = userAccount.Password;
         obj.UserGroup = userAccount.UserGroup;
         obj.Status = userAccount.Status;
+
+        return await _userAccountRepository.UpdateAsync(obj);
+    }
+
+    public async Task<bool> UpdatePasswordAsync(UserAccountChangePasswordDto userAccountChangePasswordDto)
+    {
+        var obj = await _userAccountRepository.GetAsync(userAccountChangePasswordDto.Id);
+
+        if(obj is null) return false;
+
+        obj.Password = userAccountChangePasswordDto.NewPassword;
 
         return await _userAccountRepository.UpdateAsync(obj);
     }
