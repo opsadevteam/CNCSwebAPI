@@ -35,7 +35,8 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
 
      public async Task<bool> UpdateAsync(TblUserAccount userAccount)
     {
-        context.TblUserAccount.Update(userAccount);
+        // context.TblUserAccount.Update(userAccount);
+         context.Entry(userAccount).State = EntityState.Modified;
         return await SaveAllAsync();
     }
 
