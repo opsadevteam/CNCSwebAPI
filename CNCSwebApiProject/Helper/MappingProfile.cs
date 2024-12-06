@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.UserAccountsDtos;
 using CNCSwebApiProject.Models;
 
 namespace CNCSwebApiProject.Helper
