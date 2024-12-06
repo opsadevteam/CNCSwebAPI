@@ -44,6 +44,13 @@ namespace CNCSwebApiProject.Services.TransactionService
             return _mapper.Map<TransactionDto>(transaction);
         }
 
+        public async Task<IEnumerable<TransactionDetaildDto>> GetTransactionCustomerIdAsync(string customerId)
+        {
+            var transaction = await _transactionRepository.GetTransactionCustomerIdAsync(customerId);
+            if (transaction == null) return null;
+            return _mapper.Map<IEnumerable<TransactionDetaildDto>>(transaction);
+        }
+
         public async Task<IEnumerable<TransactionDto>> GetTransactionsAsync()
         {
             var transactions = await _transactionRepository.GetTransactionsAsync();
@@ -60,6 +67,11 @@ namespace CNCSwebApiProject.Services.TransactionService
         public async Task<bool> TransactionExistsAsync(int transactionId)
         {
             return await _transactionRepository.TransactionExistsAsync(transactionId);
+        }
+
+        public async Task<bool> TransactionExistsCustomerIdAsync(string customerId)
+        {
+            return await _transactionRepository.TransactionExistsCustomerIdAsync(customerId);
         }
 
         public async Task<bool> UpdateTransactionAsync(TransactionDto transactionDto)

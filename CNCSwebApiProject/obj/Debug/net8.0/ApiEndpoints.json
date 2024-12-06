@@ -681,6 +681,41 @@
     ]
   },
   {
+    "ContainingType": "CNCSwebApiProject.Controllers.TransactionController",
+    "Method": "GetTransactionCustomerId",
+    "RelativePath": "api/v1/Transaction/CustomerId/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CNCSwebApiProject.Models.TblTransactions",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
     "ContainingType": "CNCSwebApiProject.Controllers.TransactionLogsController",
     "Method": "GetTransactionsLogs",
     "RelativePath": "api/v1/TransactionLogs",
