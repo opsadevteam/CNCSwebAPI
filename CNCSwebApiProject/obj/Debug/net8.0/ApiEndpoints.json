@@ -851,5 +851,25 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetProductSummaryChartData",
+    "RelativePath": "api/v1/WorkloadStatistics/productsummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetUserCountChartData",
+    "RelativePath": "api/v1/WorkloadStatistics/usercount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
