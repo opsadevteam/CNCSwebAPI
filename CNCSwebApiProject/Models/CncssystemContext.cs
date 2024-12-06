@@ -44,6 +44,8 @@ public partial class CncssystemContext : DbContext
         {
             entity.ToTable("tblDescriptions");
 
+            entity.HasIndex(e => e.ProductVendorId, "IX_tblDescriptions_ProductVendorID");
+
             entity.Property(e => e.AddedBy).HasMaxLength(50);
             entity.Property(e => e.DateAdded).HasPrecision(0);
             entity.Property(e => e.Description).HasMaxLength(250);
@@ -86,6 +88,10 @@ public partial class CncssystemContext : DbContext
         {
             entity.ToTable("tblTransactionLogs");
 
+            entity.HasIndex(e => e.DescriptionId, "IX_tblTransactionLogs_DescriptionID");
+
+            entity.HasIndex(e => e.ProductVendorId, "IX_tblTransactionLogs_ProductVendorID");
+
             entity.Property(e => e.AddedBy).HasMaxLength(50);
             entity.Property(e => e.CustomerId)
                 .HasMaxLength(50)
@@ -121,6 +127,10 @@ public partial class CncssystemContext : DbContext
         modelBuilder.Entity<TblTransactions>(entity =>
         {
             entity.ToTable("tblTransactions");
+
+            entity.HasIndex(e => e.DescriptionId, "IX_tblTransactions_DescriptionID");
+
+            entity.HasIndex(e => e.ProductVendorId, "IX_tblTransactions_ProductVendorID");
 
             entity.Property(e => e.AddedBy).HasMaxLength(50);
             entity.Property(e => e.CustomerId)
