@@ -60,5 +60,6 @@ namespace CNCSwebApiProject.Controllers
 
             return Ok(new { message = "Transaction soft deleted successfully" });
         }
+         
     }
 }

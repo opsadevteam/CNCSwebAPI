@@ -1,6 +1,6 @@
 ﻿namespace CNCSwebApiProject.Dto
 {
-    public class TransactionDto
+    public class TransactionLogsDto
     {
         public int Id { get; set; }
 
@@ -14,9 +14,9 @@
 
         public long? Duration { get; set; }
 
-        public int? ProductVendorId { get; set; }
+        public string? ProductVendorId { get; set; }
 
-        public int? DescriptionId { get; set; }
+        public string? DescriptionId { get; set; }
 
         public string? Remark { get; set; }
 
@@ -34,10 +34,10 @@
 
         public string? LogId { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        public string? LogBy { get; set; }
 
-    
+        public DateTime? LogDate { get; set; }
+
+        public string? LogType { get; set; }
     }
-
-   
 }

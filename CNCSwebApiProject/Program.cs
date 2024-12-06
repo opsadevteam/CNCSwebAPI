@@ -42,6 +42,7 @@ builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IEmailRecordsRepository, EmailRecordsRepository>();
 builder.Services.AddScoped<IPhoneRecordsRepository, PhoneRecordsRepository>();
+builder.Services.AddScoped<ITransactionLogsRepository, TransactionLogsRepository>();
 builder.Services.AddScoped<IProductVendorRepository, ProductVendorRepository>();
 builder.Services.AddScoped<IProductVendorService, ProductVendorService>();
 builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();

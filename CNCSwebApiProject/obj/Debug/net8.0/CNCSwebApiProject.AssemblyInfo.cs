@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+333f75629a97fac3b063d5e132d30961cacdff53")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e15cdf1ee0c94861fd57febb3873a6569cbf2b2e")]
+>>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
 [assembly: System.Reflection.AssemblyProductAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

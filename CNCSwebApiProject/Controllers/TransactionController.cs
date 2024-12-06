@@ -49,6 +49,23 @@ namespace CNCSwebApiProject.Controllers
             return Ok(transactionDto);
         }
 
+        [HttpGet("CustomerId/{customerId}")]
+        [ProducesResponseType(200, Type = typeof(TblTransactions))]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetTransactionCustomerId(string customerId)
+        {
+            if (!await _transactionService.TransactionExistsCustomerIdAsync(customerId))
+                return NotFound();
+            var transactionDto = await _transactionService.GetTransactionCustomerIdAsync(customerId);
+            if (transactionDto == null)
+            {
+                return NotFound();
+            }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(transactionDto);
+        }
+
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]

@@ -13,6 +13,9 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblTransactions, TransactionDto>();
             CreateMap<TransactionDto, TblTransactions>();
 
+            CreateMap<TblTransactions, TransactionDetaildDto>();
+            CreateMap<TransactionDetaildDto, TblTransactions>();
+
             CreateMap<TblProductVendor, ProductVendorDto>();
             CreateMap<ProductVendorDto, TblProductVendor>();
 
@@ -41,6 +44,14 @@ namespace CNCSwebApiProject.Helper
                 .ForMember(dest => dest.DescriptionId,
                            opt => opt.MapFrom(src => src.Description != null ? src.Description.Description : null))
                 .ReverseMap(); // Reverse mapping TransactionDto to TblTransactions  
+
+            CreateMap<TblTransactionLogs, TransactionLogsDto>()
+                .ForMember(dest => dest.ProductVendorId,
+                           opt => opt.MapFrom(src => src.ProductVendor != null ? src.ProductVendor.ProductVendor : null))
+                .ForMember(dest => dest.DescriptionId,
+                           opt => opt.MapFrom(src => src.Description != null ? src.Description.Description : null))
+                .ReverseMap(); // Reverse mapping TransactionDto to TblTransactions
+
 
         }
     }

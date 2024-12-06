@@ -9,7 +9,7 @@ public partial class TblTransactions
 
     public string? TransactionId { get; set; }
 
-    public string? CustomerId { get; set; }
+    public string CustomerId { get; set; } = null!;
 
     public DateTime? PickUpDate { get; set; }
 

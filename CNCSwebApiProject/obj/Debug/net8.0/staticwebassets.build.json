@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "mesgEJqGmEnCnUcPwwAUpf3Xrn98FiQ/hr/DIEjOSwE=",
+  "Hash": "PkhSLjvW3gH8qPGIdtZ5btu0ihRVmijXDPkCqWZTxzE=",
   "Source": "CNCSwebApiProject",
   "BasePath": "_content/CNCSwebApiProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

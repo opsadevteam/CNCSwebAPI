@@ -1,6 +1,6 @@
 ﻿namespace CNCSwebApiProject.Dto
 {
-    public class TransactionDto
+    public class TransactionDetaildDto
     {
         public int Id { get; set; }
 
@@ -36,8 +36,9 @@
 
         public bool? IsDeleted { get; set; }
 
-    
-    }
+        public DescriptionDto Description { get; set; }
 
-   
+
+        public ProductVendorDto ProductVendor { get; set; }
+    }
 }
