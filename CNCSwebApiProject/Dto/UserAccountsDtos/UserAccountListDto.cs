@@ -1,4 +1,4 @@
-namespace CNCSwebApiProject.Dto;
+namespace CNCSwebApiProject.Dto.UserAccountsDtos;
 
 public class UserAccountListDto 
 {

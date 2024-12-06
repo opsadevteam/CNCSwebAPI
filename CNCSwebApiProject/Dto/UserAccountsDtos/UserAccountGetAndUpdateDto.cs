@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CNCSwebApiProject.Dto;
+namespace CNCSwebApiProject.Dto.UserAccountsDtos;
 
 public class UserAccountGetAndUpdateDto
 {
-    public int Id { get; set; }
     [Required]
     public required string FullName { get; set; }
     [Required]

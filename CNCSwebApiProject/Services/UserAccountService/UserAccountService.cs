@@ -1,7 +1,7 @@
 using System;
 using AutoMapper;
 using CNCSproject.Interface;
-using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.UserAccountsDtos;
 using CNCSwebApiProject.Models;
 
 namespace CNCSwebApiProject.Services.UserAccountService;
@@ -34,9 +34,9 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
     {
         return await _userAccountRepository.IsUserExistsAsync(Username, id);
     }
-    public async Task<bool> UpdateDetailsAsync(UserAccountGetAndUpdateDto userAccount)
+    public async Task<bool> UpdateDetailsAsync(int UserAccount_Id, UserAccountGetAndUpdateDto userAccount)
     {
-        var obj = await _userAccountRepository.GetAsync(userAccount.Id);
+        var obj = await _userAccountRepository.GetAsync(UserAccount_Id);
 
         if(obj is null) return false;
 
@@ -49,9 +49,9 @@ public class UserAccountService(IUserAccountRepository _userAccountRepository, I
         return await _userAccountRepository.UpdateAsync(obj);
     }
 
-    public async Task<bool> UpdatePasswordAsync(UserAccountChangePasswordDto userAccountChangePasswordDto)
+    public async Task<bool> UpdatePasswordAsync(int UserAccount_Id, UserAccountChangePasswordDto userAccountChangePasswordDto)
     {
-        var obj = await _userAccountRepository.GetAsync(userAccountChangePasswordDto.Id);
+        var obj = await _userAccountRepository.GetAsync(UserAccount_Id);
 
         if(obj is null) return false;
 
