@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.UserAccountsDtos;
 using CNCSwebApiProject.Models;
 
 namespace CNCSwebApiProject.Helper
@@ -21,7 +22,12 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblDescriptions, DescriptionDto>();
             CreateMap<DescriptionDto, TblDescriptions>();
 
-            CreateMap<TblUserAccount, UserAccountDto>();
+            CreateMap<TblUserAccount, UserAccountListDto>();
+            CreateMap<TblUserAccount, UserAccountGetAndUpdateDto>().ReverseMap();
+            CreateMap<TblUserAccount, UserAccountCreateDto>().ReverseMap();
+
+            CreateMap<TblActivityLog, ActivityLogGetDto>();
+            CreateMap<TblActivityLog, ActivityLogInsertDto>().ReverseMap();
 
             // Mapping for TblTransactions to TransactionDto
             CreateMap<TblTransactions, EmailRecordsDto>()

@@ -1,6 +1,8 @@
 using CNCSapi.Interface;
 using CNCSapi.Repository;
+using CNCSwebApiProject.Dto;
 using CNCSwebApiProject.Models;
+using CNCSwebApiProject.Services.ActivityLogService;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +12,12 @@ namespace CNCSapi.Controllers
     [EnableCors("AllowOrigin")]
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ActivityLogController(IActivityLogRepository _activityLogRepository) : ControllerBase
+    public class ActivityLogController(IActivityLogService _activityLogService) : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblActivityLog>>> GetActivityLogs()
+        public async Task<ActionResult<IEnumerable<ActivityLogGetDto>>> GetActivityLogs()
         {
-            var logs = await _activityLogRepository.GetAllAsync();
+            var logs = await _activityLogService.GetAllAsync();
 
             return logs.Any() ?
                 Ok(logs) :

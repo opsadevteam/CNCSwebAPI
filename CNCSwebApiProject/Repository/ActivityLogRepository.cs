@@ -9,6 +9,8 @@ public class ActivityLogRepository(CncssystemContext context) : IActivityLogRepo
 {
     public async Task<IEnumerable<TblActivityLog>> GetAllAsync()
     {
-        return await context.TblActivityLog.ToListAsync();
+        return await context.TblActivityLog
+            .OrderByDescending( x => x.Id)
+            .ToListAsync();
     }
 }

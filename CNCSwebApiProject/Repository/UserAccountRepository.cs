@@ -15,6 +15,7 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
     {
         return await context.TblUserAccount
         .Where(user => user.IsDeleted == false)
+        .OrderByDescending(user => user.Id)
         .ToListAsync();
     }
 
@@ -22,6 +23,7 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
     {
         return await context.TblUserAccount
         .Where(a => a.Id == id)
+        .Where(a => a.IsDeleted == false)
         .SingleOrDefaultAsync();
     }
 
@@ -33,7 +35,8 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
 
      public async Task<bool> UpdateAsync(TblUserAccount userAccount)
     {
-        context.TblUserAccount.Update(userAccount);
+        // context.TblUserAccount.Update(userAccount);
+         context.Entry(userAccount).State = EntityState.Modified;
         return await SaveAllAsync();
     }
 
@@ -46,13 +49,12 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
         return deleted > 0;
     }
 
-    public async Task<bool> IsUserExistsAsync(string Username)
+    public async Task<bool> IsUserExistsAsync(string Username, int id)
     {
 
         return await context.TblUserAccount
-            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.IsDeleted == false);
+            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.Id != id && x.IsDeleted == false);
     }
-
 
     public async Task<bool> SaveAllAsync()
     {

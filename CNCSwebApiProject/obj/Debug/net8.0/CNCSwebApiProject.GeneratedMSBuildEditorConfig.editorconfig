@@ -17,13 +17,21 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CNCSwebApiProject
 build_property.RootNamespace = CNCSwebApiProject
+<<<<<<< HEAD
+build_property.ProjectDir = C:\Users\markmb\source\repos\0) Web Development bootcamp\Angular Projects\CNCSwebAPI\CNCSwebApiProject\
+=======
 build_property.ProjectDir = C:\Users\robert.verano\Desktop\myCode\GitRepo\CNCSwebAPIArviBranch\CNCSwebAPI2\CNCSwebAPI\CNCSwebApiProject\
+>>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
+build_property.MSBuildProjectDirectory = C:\Users\markmb\source\repos\0) Web Development bootcamp\Angular Projects\CNCSwebAPI\CNCSwebApiProject
+=======
 build_property.MSBuildProjectDirectory = C:\Users\robert.verano\Desktop\myCode\GitRepo\CNCSwebAPIArviBranch\CNCSwebAPI2\CNCSwebAPI\CNCSwebApiProject
+>>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
