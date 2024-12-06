@@ -1,31 +1,291 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI\\",
   "Documents": [],
+=======
+  "WorkspaceRootPath": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\repository\\useraccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\repository\\useraccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\dto\\transactionlogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\dto\\transactionlogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\repository\\emailrecordsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\repository\\emailrecordsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\controllers\\emailrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\controllers\\emailrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\interface\\itransactionlogsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\interface\\itransactionlogsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\repository\\transactionlogsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\repository\\transactionlogsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\controllers\\transactionlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\controllers\\transactionlogscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\controllers\\useraccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\controllers\\useraccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\interface\\iemailrecordsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\interface\\iemailrecordsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\interface\\iuseraccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\interface\\iuseraccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\dto\\emailrecordsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\dto\\emailrecordsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\dto\\emaillogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\dto\\emaillogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+>>>>>>> e15cdf1ee0c94861fd57febb3873a6569cbf2b2e
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< HEAD
           "DockedWidth": 1250,
           "SelectedChildIndex": -1,
+=======
+          "DockedWidth": 1373,
+          "SelectedChildIndex": 7,
+>>>>>>> e15cdf1ee0c94861fd57febb3873a6569cbf2b2e
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
+<<<<<<< HEAD
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+=======
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserAccountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\UserAccountRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Repository\\UserAccountRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\UserAccountRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Repository\\UserAccountRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T07:00:16.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransactionLogsDto.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\TransactionLogsDto.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Dto\\TransactionLogsDto.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\TransactionLogsDto.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Dto\\TransactionLogsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T02:30:45.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransactionLogsController.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\TransactionLogsController.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\TransactionLogsController.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\TransactionLogsController.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\TransactionLogsController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAQwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:33:43.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransactionLogsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\TransactionLogsRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Repository\\TransactionLogsRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\TransactionLogsRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Repository\\TransactionLogsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:30:23.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmailLogsDto.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\EmailLogsDto.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Dto\\EmailLogsDto.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\EmailLogsDto.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Dto\\EmailLogsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:26:33.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmailRecordsDto.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\EmailRecordsDto.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Dto\\EmailRecordsDto.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\EmailRecordsDto.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Dto\\EmailRecordsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:25:48.33Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1127,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Program.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Program.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Program.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:57:20.172Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmailRecordsController.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\EmailRecordsController.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\EmailRecordsController.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\EmailRecordsController.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\EmailRecordsController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:24:31.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailRecordsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\EmailRecordsRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Repository\\EmailRecordsRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Repository\\EmailRecordsRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Repository\\EmailRecordsRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAiwBIAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:07:51.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Helper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Helper\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Helper\\MappingProfile.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Helper\\MappingProfile.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAC8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T08:26:14.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserAccountController.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\UserAccountController.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\UserAccountController.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\UserAccountController.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\UserAccountController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:12:16.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ITransactionLogsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\ITransactionLogsRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Interface\\ITransactionLogsRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\ITransactionLogsRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Interface\\ITransactionLogsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:28:56.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IEmailRecordsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\IEmailRecordsRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Interface\\IEmailRecordsRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\IEmailRecordsRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Interface\\IEmailRecordsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:07:01.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IUserAccountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\IUserAccountRepository.cs",
+              "RelativeDocumentMoniker": "CNCSwebApiProject\\Interface\\IUserAccountRepository.cs",
+              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Interface\\IUserAccountRepository.cs",
+              "RelativeToolTip": "CNCSwebApiProject\\Interface\\IUserAccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T01:12:13.451Z"
+>>>>>>> e15cdf1ee0c94861fd57febb3873a6569cbf2b2e
             }
           ]
         }
