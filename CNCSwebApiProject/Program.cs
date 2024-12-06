@@ -8,6 +8,7 @@ using CNCSwebApiProject.Repository;
 using CNCSwebApiProject.Services.DescriptionService;
 using CNCSwebApiProject.Services.ProductVendorService;
 using CNCSwebApiProject.Services.TransactionService;
+using CNCSwebApiProject.Services.WorkloadStatistics;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -41,6 +42,7 @@ builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IEmailRecordsRepository, EmailRecordsRepository>();
 builder.Services.AddScoped<IPhoneRecordsRepository, PhoneRecordsRepository>();
 builder.Services.AddScoped<ITransactionLogsRepository, TransactionLogsRepository>();
+builder.Services.AddScoped<IWorkloadStatisticsService, WorkloadStatisticsService>();
 builder.Services.AddScoped<IProductVendorRepository, ProductVendorRepository>();
 builder.Services.AddScoped<IProductVendorService, ProductVendorService>();
 builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
@@ -59,7 +61,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 // my Cors
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 
