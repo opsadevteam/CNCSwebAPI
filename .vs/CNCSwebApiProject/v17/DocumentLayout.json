@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\services\\workloadstatisticsservice\\workloadstatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\services\\workloadstatisticsservice\\workloadstatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\controllers\\workloadstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\controllers\\workloadstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\dto\\chartsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\dto\\chartsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|c:\\users\\alvinvr\\desktop\\cncswebapi\\cncswebapi\\cncswebapiproject\\services\\workloadstatisticsservice\\iworkloadstatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF01B348-C931-4017-BC96-F0458230DA20}|CNCSwebApiProject\\CNCSwebApiProject.csproj|solutionrelative:cncswebapiproject\\services\\workloadstatisticsservice\\iworkloadstatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,8 +13,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1406,
-          "SelectedChildIndex": 8,
+          "DockedWidth": 1771,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,72 +46,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Program.cs",
               "RelativeDocumentMoniker": "CNCSwebApiProject\\Program.cs",
               "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Program.cs",
               "RelativeToolTip": "CNCSwebApiProject\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T07:48:34.77Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WorkloadStatisticsService.cs",
-              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Services\\WorkloadStatisticsService\\WorkloadStatisticsService.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Services\\WorkloadStatisticsService\\WorkloadStatisticsService.cs",
-              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Services\\WorkloadStatisticsService\\WorkloadStatisticsService.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Services\\WorkloadStatisticsService\\WorkloadStatisticsService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAFgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T02:06:41.021Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WorkloadStatisticsController.cs",
-              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\WorkloadStatisticsController.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Controllers\\WorkloadStatisticsController.cs",
-              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Controllers\\WorkloadStatisticsController.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Controllers\\WorkloadStatisticsController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAxwEQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T02:11:30.176Z"
             }
           ]
         },
         {
-          "DockedWidth": 1106,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 741,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IWorkloadStatisticsService.cs",
-              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Services\\WorkloadStatisticsService\\IWorkloadStatisticsService.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Services\\WorkloadStatisticsService\\IWorkloadStatisticsService.cs",
-              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Services\\WorkloadStatisticsService\\IWorkloadStatisticsService.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Services\\WorkloadStatisticsService\\IWorkloadStatisticsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T02:06:31.602Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChartsDto.cs",
-              "DocumentMoniker": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\ChartsDto.cs",
-              "RelativeDocumentMoniker": "CNCSwebApiProject\\Dto\\ChartsDto.cs",
-              "ToolTip": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\Dto\\ChartsDto.cs",
-              "RelativeToolTip": "CNCSwebApiProject\\Dto\\ChartsDto.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAA5wEsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T02:03:39.523Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
