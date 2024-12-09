@@ -9,11 +9,9 @@ using CNCSwebApiProject.Services.ActivityLogService;
 using CNCSwebApiProject.Services.DescriptionService;
 using CNCSwebApiProject.Services.ProductVendorService;
 using CNCSwebApiProject.Services.TransactionService;
-<<<<<<< HEAD
 using CNCSwebApiProject.Services.WorkloadStatistics;
-=======
 using CNCSwebApiProject.Services.UserAccountService;
->>>>>>> 1de6444c2e1ffa82677899d70f7e05ed1497e30b
+
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 

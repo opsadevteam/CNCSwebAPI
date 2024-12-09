@@ -5391,39 +5391,25 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\markmb\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\robert.verano\\.nuget\\packages\\": {},
->>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\alvinvr\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\markmb\\source\\repos\\0) Web Development bootcamp\\Angular Projects\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
+      "projectUniqueName": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
       "projectName": "CNCSwebApiProject",
-      "projectPath": "C:\\Users\\markmb\\source\\repos\\0) Web Development bootcamp\\Angular Projects\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
-      "packagesPath": "C:\\Users\\markmb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\markmb\\source\\repos\\0) Web Development bootcamp\\Angular Projects\\CNCSwebAPI\\CNCSwebApiProject\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI2\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
-      "projectName": "CNCSwebApiProject",
-      "projectPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI2\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
-      "packagesPath": "C:\\Users\\robert.verano\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robert.verano\\Desktop\\myCode\\GitRepo\\CNCSwebAPIArviBranch\\CNCSwebAPI2\\CNCSwebAPI\\CNCSwebApiProject\\obj\\",
->>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
+      "projectPath": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\CNCSwebApiProject.csproj",
+      "packagesPath": "C:\\Users\\alvinvr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\markmb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\robert.verano\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
+        "C:\\Users\\alvinvr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5449,9 +5435,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -5505,15 +5490,17 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0ad5b565b843c9cac644426636f3ddc5a62de258
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\alvinvr\\Desktop\\CNCSwebAPI\\CNCSwebAPI\\CNCSwebApiProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
