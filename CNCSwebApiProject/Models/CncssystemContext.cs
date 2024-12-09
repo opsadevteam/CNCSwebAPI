@@ -26,6 +26,10 @@ public partial class CncssystemContext : DbContext
     public virtual DbSet<TblUserAccount> TblUserAccount { get; set; }
 
     public virtual DbSet<TblUserAccountLog> TblUserAccountLog { get; set; }
+    public virtual DbSet<ProductVendor> ProductVendor { get; set; }
+    public virtual DbSet<ProductVendorLog> ProductVendorLog { get; set; }
+    public virtual DbSet<ProductDescription> ProductDescription { get; set; }
+    public virtual DbSet<ProductDescriptionLog> ProductDescriptionLog { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
