@@ -854,8 +854,48 @@
   },
   {
     "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetDescriptionTable",
+    "RelativePath": "api/v1/WorkloadStatistics/description-table",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CNCSwebApiProject.Dto.ChartsDto\u002BDescriptionTableDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
     "Method": "GetProductSummaryChartData",
     "RelativePath": "api/v1/WorkloadStatistics/productsummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetProductSummaryChartTotal",
+    "RelativePath": "api/v1/WorkloadStatistics/productsummary/total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetTransactionPerDay",
+    "RelativePath": "api/v1/WorkloadStatistics/transactionperday",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

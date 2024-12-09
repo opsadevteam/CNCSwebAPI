@@ -1,6 +1,7 @@
 ﻿using CNCSwebApiProject.Services.WorkloadStatistics;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using static CNCSwebApiProject.Dto.ChartsDto;
 
 namespace CNCSwebApiProject.Controllers
 {
@@ -20,7 +21,15 @@ namespace CNCSwebApiProject.Controllers
         public async Task<IActionResult> GetProductSummaryChartData()
         {
             var data = await _workloadStatisticsService.GetProductSummaryChartData();
-            return Ok(data); // Return Product Summary Chart data
+            return Ok(data);
+        }
+
+        // GET api/v1/workloadstatistics/productsummary/total
+        [HttpGet("productsummary/total")]
+        public async Task<IActionResult> GetProductSummaryChartTotal()
+        {
+            var data = await _workloadStatisticsService.GetProductSummaryChartTotal();
+            return Ok(data);
         }
 
         // GET api/v1/workloadstatistics/usercount
@@ -28,9 +37,32 @@ namespace CNCSwebApiProject.Controllers
         public async Task<IActionResult> GetUserCountChartData()
         {
             var data = await _workloadStatisticsService.GetUserCountChartData();
-            return Ok(data); // Return User Count Chart data
+            return Ok(data);
         }
 
-        // Optionally, you can add other chart-related endpoints here.
+        // WorkloadStatisticsController.cs
+        [HttpGet("transactionperday")]
+        public async Task<IActionResult> GetTransactionPerDay()
+        {
+            var data = await _workloadStatisticsService.GetTransactionPerDay();
+            return Ok(data); // Return grouped data by day
+        }
+
+        // Endpoint to fetch the description table
+        [HttpGet("description-table")]
+        public async Task<ActionResult<DescriptionTableDto>> GetDescriptionTable()
+        {
+            try
+            {
+                var result = await _workloadStatisticsService.GetDescriptionTable();
+                return Ok(result); // Return the result as a 200 OK response
+            }
+            catch (Exception ex)
+            {
+                // Log error (for example, using a logging framework like Serilog or NLog)
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
     }
 }

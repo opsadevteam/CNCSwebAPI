@@ -16,6 +16,35 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
             _dbContext = dbContext;
         }
 
+        public async Task<DescriptionTableDto> GetDescriptionTable()
+        {
+            var data = await _dbContext.TblTransactions
+                .Where(t => t.IsDeleted == false) // Exclude deleted transactions
+               .Include(p => p.ProductVendor)
+                .Include(t => t.Description)
+               .GroupBy(t => t.ProductVendor.ProductVendor) // Group by product vendor
+               .Select(g => new
+               {
+                   Product = g.Key,
+                   CallTotal = g.Count(t => t.TransactionType == "Phone"),
+                   EmailTotal = g.Count(t => t.TransactionType == "Email"),
+                   QQCount = g.Count(t => t.TransactionType == "QQ")
+               })
+               .ToListAsync();
+
+            return new DescriptionTableDto
+            {
+                DataPoints = data.Select(d => new DescriptionDataPoint
+                {
+                    Description = d.Product,
+                    CallCount = d.CallTotal,
+                    EMailCount = d.EmailTotal,
+                    QQCount = d.QQCount,
+                    Total = d.CallTotal + d.EmailTotal + d.QQCount
+                }).ToList()
+            };
+        }
+
         public async Task<ProductSummaryChartDto> GetProductSummaryChartData()
         {
             var data = await _dbContext.TblTransactions
@@ -34,6 +63,62 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
             };
         }
 
+        public async Task<ProductSummaryChartTotalDto> GetProductSummaryChartTotal()
+        {
+            var data = await _dbContext.TblTransactions
+                 .Where(t => t.IsDeleted == false) // Exclude deleted transactions
+                 .Include(p => p.ProductVendor)
+                 .Include(t => t.Description)
+                .GroupBy(t => t.ProductVendor.ProductVendor) // Group by product vendor
+                .Select(g => new
+                {
+                    Product = g.Key,
+                    CallTotal = g.Count(t => t.TransactionType == "Phone"),
+                    EmailTotal = g.Count(t => t.TransactionType == "Email"),
+                    QQCount = g.Count(t => t.TransactionType == "QQ")
+                })
+                .ToListAsync();
+
+            return new ProductSummaryChartTotalDto
+            {
+                DataPoints = data.Select(d => new ChartDataTableTotalDataPoint
+                {
+                    Product = d.Product,
+                    CallTotal = d.CallTotal,
+                    EmailTotal = d.EmailTotal,
+                    QQCount = d.QQCount,
+                    Total = d.CallTotal + d.EmailTotal + d.QQCount
+                }).ToList()
+            };
+        }
+        public async Task<TransactionPerDayDto> GetTransactionPerDay()
+        {
+            var data = await _dbContext.TblTransactions
+                .Where(t => t.IsDeleted == false) // Exclude deleted transactions
+                .GroupBy(t => t.DateAdded.Value.Day) // Extract day value
+                .Select(g => new
+                {
+                    Day = g.Key,
+                    CallTotal = g.Count(t => t.TransactionType == "Phone"),
+                    EmailTotal = g.Count(t => t.TransactionType == "Email"),
+                    QQCount = g.Count(t => t.TransactionType == "QQ"),
+                    Total = g.Count()
+                })
+                .ToListAsync();
+
+            return new TransactionPerDayDto
+            {
+                DataPoints = data.Select(d => new TransactionPerDayDataPoint
+                {
+                    Day = d.Day,
+                    CallTotal = d.CallTotal,
+                    EmailTotal = d.EmailTotal,
+                    QQCount = d.QQCount,
+                    Total = d.Total
+                }).ToList()
+            };
+        }
+
         public async Task<UserCountSummaryChartDto> GetUserCountChartData()
         {
             var data = await _dbContext.TblTransactions
@@ -43,7 +128,10 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                 {
                     User = g.Key,
                     CallCount = g.Count(t => t.TransactionType == "Phone"),
-                    MailCount = g.Count(t => t.TransactionType == "Email")
+                    MailCount = g.Count(t => t.TransactionType == "Email"),
+                    QQCount = g.Count(t=> t.TransactionType == "QQ"),
+                    Total = g.Count()
+                    
                 })
                 .ToListAsync();
 
@@ -53,14 +141,23 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                 {
                     User = d.User,
                     CallCount = d.CallCount,
-                    MailCount = d.MailCount
+                    EMailCount = d.MailCount,
+                    QQCount = d.QQCount,
+                    Total = d.Total
                 }).ToList()
             };
+        }
+
+        public Task<UserCountSummaryChartDto> GetUserCountChartTotal()
+        {
+            throw new NotImplementedException();
         }
 
         public Task<IEnumerable<TransactionDto>> GetWorkloadStatistics()
         {          
             throw new NotImplementedException();
         }
+          
+     
     }
 }
