@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CNCSwebApiProject.Models.TblActivityLog, CNCSwebApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CNCSwebApiProject.Dto.ActivityLogGetDto, CNCSwebApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -789,16 +789,16 @@
     ]
   },
   {
-    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountController",
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
     "Method": "GetUserAccountsAsync",
-    "RelativePath": "api/v1/UserAccount",
+    "RelativePath": "api/v1/UserAccounts",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CNCSwebApiProject.Dto.UserAccountDto, CNCSwebApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CNCSwebApiProject.Dto.UserAccountsDtos.UserAccountListDto, CNCSwebApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -809,38 +809,38 @@
     ]
   },
   {
-    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountController",
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
     "Method": "AddUserAccountAsync",
-    "RelativePath": "api/v1/UserAccount",
+    "RelativePath": "api/v1/UserAccounts",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "newUser",
-        "Type": "CNCSwebApiProject.Models.TblUserAccount",
+        "Type": "CNCSwebApiProject.Dto.UserAccountsDtos.UserAccountCreateDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountController",
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
     "Method": "GetUserAccountAsync",
-    "RelativePath": "api/v1/UserAccount/{id}",
+    "RelativePath": "api/v1/UserAccounts/{UserAccount_Id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "UserAccount_Id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CNCSwebApiProject.Dto.UserAccountDto",
+        "Type": "CNCSwebApiProject.Dto.UserAccountsDtos.UserAccountGetAndUpdateDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -851,40 +851,121 @@
     ]
   },
   {
-    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountController",
-    "Method": "UpdateUserAccountAsync",
-    "RelativePath": "api/v1/UserAccount/{id}",
-    "HttpMethod": "PUT",
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
+    "Method": "DeleteUserAccountAsync",
+    "RelativePath": "api/v1/UserAccounts/{UserAccount_Id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "UserAccount_Id",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "userAccount",
-        "Type": "CNCSwebApiProject.Models.TblUserAccount",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountController",
-    "Method": "DeleteUserAccountAsync",
-    "RelativePath": "api/v1/UserAccount/{id}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
+    "Method": "UpdateUserAccountPasswordAsync",
+    "RelativePath": "api/v1/UserAccounts/{UserAccount_Id}/ChangePassword",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "UserAccount_Id",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userAccount",
+        "Type": "CNCSwebApiProject.Dto.UserAccountsDtos.UserAccountChangePasswordDto",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.UserAccountsController",
+    "Method": "UpdateUserAccountDetailsAsync",
+    "RelativePath": "api/v1/UserAccounts/{UserAccount_Id}/Details",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserAccount_Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userAccount",
+        "Type": "CNCSwebApiProject.Dto.UserAccountsDtos.UserAccountGetAndUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetDescriptionTable",
+    "RelativePath": "api/v1/WorkloadStatistics/description-table",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "CNCSwebApiProject.Dto.ChartsDto\u002BDescriptionTableDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetProductSummaryChartData",
+    "RelativePath": "api/v1/WorkloadStatistics/productsummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetProductSummaryChartTotal",
+    "RelativePath": "api/v1/WorkloadStatistics/productsummary/total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetTransactionPerDay",
+    "RelativePath": "api/v1/WorkloadStatistics/transactionperday",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CNCSwebApiProject.Controllers.WorkloadStatisticsController",
+    "Method": "GetUserCountChartData",
+    "RelativePath": "api/v1/WorkloadStatistics/usercount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]
