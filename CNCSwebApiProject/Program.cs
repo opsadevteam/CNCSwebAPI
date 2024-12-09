@@ -5,10 +5,15 @@ using CNCSproject.Repository;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using CNCSwebApiProject.Repository;
+using CNCSwebApiProject.Services.ActivityLogService;
 using CNCSwebApiProject.Services.DescriptionService;
 using CNCSwebApiProject.Services.ProductVendorService;
 using CNCSwebApiProject.Services.TransactionService;
+<<<<<<< HEAD
 using CNCSwebApiProject.Services.WorkloadStatistics;
+=======
+using CNCSwebApiProject.Services.UserAccountService;
+>>>>>>> 1de6444c2e1ffa82677899d70f7e05ed1497e30b
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -48,7 +53,9 @@ builder.Services.AddScoped<IProductVendorService, ProductVendorService>();
 builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
 builder.Services.AddScoped<IDescriptionService, DescriptionService>();
 builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
+builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 
 var app = builder.Build();
 

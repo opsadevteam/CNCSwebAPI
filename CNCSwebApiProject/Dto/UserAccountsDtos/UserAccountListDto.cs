@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+namespace CNCSwebApiProject.Dto.UserAccountsDtos;
 
-namespace CNCSwebApiProject.Dto;
-
-    public class UserAccountDto
-    {
+public class UserAccountListDto 
+{
     public int Id { get; set; }
     public required string FullName { get; set; }
     public required string Username { get; set; }
@@ -11,4 +9,4 @@ namespace CNCSwebApiProject.Dto;
     public required  string UserGroup { get; set; }
     public  required string Status { get; set; }
     public DateTime? DateAdded { get; set; }
-    }
+}

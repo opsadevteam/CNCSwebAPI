@@ -35,6 +35,15 @@ namespace CNCSwebApiProject.Repository
             return await _context.TblTransactions.FindAsync(id);
         }
 
+        public async Task<ICollection<TblTransactions>> GetTransactionCustomerIdAsync(string customerId)
+        {
+            return await _context.TblTransactions
+                           .Include(t => t.Description) 
+                           .Include(t => t.ProductVendor) 
+                           .Where(t => t.CustomerId == customerId)
+                           .ToListAsync();
+        }
+
         public async Task<ICollection<TblTransactions>> GetTransactionsAsync()
         {
             return await _context.TblTransactions.ToListAsync();
@@ -49,6 +58,11 @@ namespace CNCSwebApiProject.Repository
         public async Task<bool> TransactionExistsAsync(int transactionId)
         {
             return await _context.TblTransactions.AnyAsync(t => t.Id == transactionId);
+        }
+
+        public async Task<bool> TransactionExistsCustomerIdAsync(string customerId)
+        {
+            return await _context.TblTransactions.AnyAsync(t => t.CustomerId == customerId);
         }
 
         public async Task<bool> UpdateTransactionAsync(TblTransactions transaction)
