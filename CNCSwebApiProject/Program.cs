@@ -58,6 +58,9 @@ builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 builder.Services.AddScoped<IProductVendorRepositoryNew, ProductVendorRepositoryNew>();
 builder.Services.AddScoped<IProductVendorServiceNew, ProductVendorServiceNew>();
 
+builder.Services.AddScoped<IProductDescriptionRepository, ProductDescriptionRepository>();
+builder.Services.AddScoped<IProductDescriptionService, ProductDescriptionService>();
+
 
 var app = builder.Build();
 

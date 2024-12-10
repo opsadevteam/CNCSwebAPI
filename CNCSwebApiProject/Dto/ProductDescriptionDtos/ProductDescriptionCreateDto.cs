@@ -1,15 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CNCSwebApiProject.Models;
+namespace CNCSwebApiProject.Dto.ProductDescriptionDtos;
 
-public class ProductDescription
+public class ProductDescriptionCreateDto
 {
-    [Key]
-    public int Id { get; set; }
-
     [Required]
-    [MaxLength(250)]
     public required string Description { get; set; }
 
     [MaxLength(50)]
@@ -21,9 +17,4 @@ public class ProductDescription
 
     [Required]
     public required int ProductVendorId { get; set; }
-
-    public ProductVendor ProductVendor { get; set; } = null!;
-
-    public ICollection<ProductDescriptionLog> ProductDescriptionLog { get; set; } = [];
-
 }

@@ -36,11 +36,11 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
     [HttpPost]
     public async Task<IActionResult> AddUserAccountAsync(UserAccountCreateDto newUser)
     {
-        if (newUser is null) 
+        if (newUser is null)
             return BadRequest("Invalid user account data.");
 
-            if (await _UserAccountService.IsUserExistsAsync(newUser.Username!, 0))
-                return Conflict("Username is already taken.");
+        if (await _UserAccountService.IsUserExistsAsync(newUser.Username!, 0))
+            return Conflict("Username is already taken.");
 
         var isAdded = await _UserAccountService.AddAsync(newUser);
         return isAdded ?
@@ -58,7 +58,7 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
         var isUpdated = await _UserAccountService.UpdateDetailsAsync(UserAccount_Id, userAccount);
 
         return isUpdated ?
-            NoContent() : 
+            NoContent() :
             NotFound($"User with ID {UserAccount_Id} not found.");
     }
 
@@ -68,7 +68,7 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
         var isUpdated = await _UserAccountService.UpdatePasswordAsync(UserAccount_Id, userAccount);
 
         return isUpdated ?
-            NoContent() : 
+            NoContent() :
             NotFound($"User with ID {UserAccount_Id} not found.");
     }
 
@@ -80,5 +80,5 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
             ? NoContent()
             : NotFound($"User with ID {UserAccount_Id} not found.");
     }
-    
- }
+
+}
