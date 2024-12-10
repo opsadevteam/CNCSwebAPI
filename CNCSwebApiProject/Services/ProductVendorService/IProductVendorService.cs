@@ -1,4 +1,5 @@
 ﻿using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.ProductVendorDtos;
 
 namespace CNCSwebApiProject.Services.ProductVendorService
 {

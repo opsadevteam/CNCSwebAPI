@@ -3,9 +3,9 @@ using CNCSwebApiProject.Models;
 
 namespace CNCSwebApiProject.Dto.ProductVendorDtos;
 
-public class ProductVendorDto
+public class ProductVendorNewDto
 {
     public int Id { get; set; }
-    public int Name { get; set; }
+    public string Name { get; set; } = null!;
     public ICollection<ProductDescriptionDto> ProductDescriptionDto { get; set; } = [];
 }

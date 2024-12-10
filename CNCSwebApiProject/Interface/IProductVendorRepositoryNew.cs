@@ -10,5 +10,6 @@ public interface IProductVendorRepositoryNew
         Task<bool> AddAsync(ProductVendor productVendor);
         Task<bool> UpdateAsync(ProductVendor productVendor);
         Task<bool> DeleteAsync(int id);
+        Task<bool> IsNameExists(string Name, int id);
         Task<bool> SaveAsync();
 }

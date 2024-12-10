@@ -5,10 +5,11 @@ namespace CNCSwebApiProject.Services.ProductVendorService;
 
 public interface IProductVendorServiceNew
 {
-    Task<IEnumerable<ProductVendorDto>> GetAllAsync(); //get all user account
-    Task<ProductVendorDto?> GetAsync(int id); //get single user account
-    Task<bool> AddAsync(ProductVendorDto productVendorDto); // Add new user account
-    Task<bool> UpdateDetailsAsync(int productVendor_Id, ProductVendorDto productVendorDto); // Update existing user account
-    Task<bool> DeleteAsync(int productVendor_Id); // Delete user account by ID
+    Task<IEnumerable<ProductVendorNewDto>> GetAllAsync(); 
+    Task<ProductVendorNewDto?> GetAsync(int productVendor_Id); 
+    Task<bool> AddAsync(ProductVendorCreateDto productVendorCreateDto); 
+    Task<bool> UpdateDetailsAsync(int productVendor_Id, ProductVendorUpdateDto productVendorUpdateDto); 
+    Task<bool> DeleteAsync(int productVendor_Id);
+    Task<bool> IsNameExists(string Name, int productVendor_Id);
 
 }

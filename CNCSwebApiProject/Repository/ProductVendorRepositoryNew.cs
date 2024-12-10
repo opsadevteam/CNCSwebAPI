@@ -40,10 +40,14 @@ public class ProductVendorRepositoryNew(CncssystemContext _context) : IProductVe
         .SingleOrDefaultAsync();
     }
 
+    public async Task<bool> IsNameExists(string Name, int id)
+    {
+        return await _context.ProductVendor.AnyAsync(x => x.Name!.ToLower() == Name.ToLower() && x.Id != id && x.IsDeleted == false);
+    }
+
     public async Task<bool> SaveAsync()
     {
         return await _context.SaveChangesAsync() > 0;
-
     }
 
     public async Task<bool> UpdateAsync(ProductVendor productVendor)

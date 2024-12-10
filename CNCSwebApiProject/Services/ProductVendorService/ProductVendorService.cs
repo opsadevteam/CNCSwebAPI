@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.ProductVendorDtos;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using CNCSwebApiProject.Repository;
@@ -62,5 +63,6 @@ namespace CNCSwebApiProject.Services.ProductVendorService
             var productVendor = _mapper.Map<TblProductVendor>(productVendorDto);
             return await _productVendorRepository.UpdateProductVendorAsync(productVendor);
         }
+
     }
 }

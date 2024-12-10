@@ -55,6 +55,10 @@ builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
 builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 
+builder.Services.AddScoped<IProductVendorRepositoryNew, ProductVendorRepositoryNew>();
+builder.Services.AddScoped<IProductVendorServiceNew, ProductVendorServiceNew>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
