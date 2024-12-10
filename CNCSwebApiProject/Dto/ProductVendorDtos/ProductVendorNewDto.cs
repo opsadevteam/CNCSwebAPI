@@ -8,5 +8,5 @@ public class ProductVendorNewDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;
-    public ICollection<ProductDescriptionGetAndUpdateDto> ProductDescriptionListDto { get; set; } = [];
+    public ICollection<ProductDescriptionGetAndUpdateDto> Descriptions { get; set; } = [];
 }
