@@ -32,9 +32,6 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblActivityLog, ActivityLogInsertDto>().ReverseMap();
 
             CreateMap<ProductVendor, ProductDto>();
-            CreateMap<ProductVendor, ProductWithDescriptionDto>()
-            .ForMember(dest => dest.Descriptions, opt => opt.MapFrom(src => src.ProductDescription))
-            .ReverseMap();
 
             CreateMap<ProductCreateDto, ProductVendor>();
             CreateMap<ProductUpdateDto, ProductVendor>();
