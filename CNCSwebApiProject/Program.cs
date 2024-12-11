@@ -7,13 +7,13 @@ using CNCSwebApiProject.Models;
 using CNCSwebApiProject.Repository;
 using CNCSwebApiProject.Services.ActivityLogService;
 using CNCSwebApiProject.Services.DescriptionService;
-using CNCSwebApiProject.Services.ProductVendorService;
 using CNCSwebApiProject.Services.TransactionService;
 using CNCSwebApiProject.Services.WorkloadStatistics;
 using CNCSwebApiProject.Services.UserAccountService;
 
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using CNCSwebApiProject.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,7 +47,6 @@ builder.Services.AddScoped<IPhoneRecordsRepository, PhoneRecordsRepository>();
 builder.Services.AddScoped<ITransactionLogsRepository, TransactionLogsRepository>();
 builder.Services.AddScoped<IWorkloadStatisticsService, WorkloadStatisticsService>();
 builder.Services.AddScoped<IProductVendorRepository, ProductVendorRepository>();
-builder.Services.AddScoped<IProductVendorService, ProductVendorService>();
 builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
 builder.Services.AddScoped<IDescriptionService, DescriptionService>();
 builder.Services.AddScoped<IUserAccountRepository, UserAccountRepository>();
@@ -55,11 +54,11 @@ builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 builder.Services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
 builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 
-builder.Services.AddScoped<IProductVendorRepositoryNew, ProductVendorRepositoryNew>();
-builder.Services.AddScoped<IProductVendorServiceNew, ProductVendorServiceNew>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<IProductDescriptionRepository, ProductDescriptionRepository>();
-builder.Services.AddScoped<IProductDescriptionService, ProductDescriptionService>();
+builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
+builder.Services.AddScoped<IDescriptionService, DescriptionService>();
 
 
 var app = builder.Build();

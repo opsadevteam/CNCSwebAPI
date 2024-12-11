@@ -1,15 +1,14 @@
-﻿using CNCSwebApiProject.Dto;
+using System;
+using CNCSwebApiProject.Dto.DescriptionDtos;
 
-namespace CNCSwebApiProject.Services.DescriptionService
+namespace CNCSwebApiProject.Services.DescriptionService;
+
+public interface IDescriptionService
 {
-    public interface IDescriptionService
-    {
-        Task<IEnumerable<DescriptionDto>> GetDescriptionsAsync();
-        Task<DescriptionDto> GetDescriptionAsync(int id);
-        Task<bool> CreateDescriptionAsync(DescriptionDto descriptionDto);
-        Task<bool> DescriptionExistsAsync(int descriptionId);
-        Task<bool> UpdateDescriptionAsync(DescriptionDto descriptionDto);
-        Task<bool> DeleteDescriptionAsync(DescriptionDto descriptionDto);
-        Task<bool> SaveAsync();
-    }
+    Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllAsync();
+    Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllByProductIdAsync(int Product_Id);
+    Task<DescriptionGetAndUpdateDto?> GetAsync(int id);
+    Task<bool> AddAsync(ProductDescriptionCreateDto productDescriptionCreateDto); 
+    Task<bool> UpdateDetailsAsync(int productDescription_Id, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto); 
+    Task<bool> DeleteAsync(int productDescription_Id);
 }

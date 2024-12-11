@@ -1,9 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CNCSwebApiProject.Dto.ProductVendorDtos;
+namespace CNCSwebApiProject.Dto.ProductDtos;
 
-public class ProductVendorUpdateDto
+public class ProductUpdateDto
 {
     [Required]
     public required string Name { get; set; }

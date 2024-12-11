@@ -1,67 +1,50 @@
-﻿using AutoMapper;
-using CNCSwebApiProject.Dto;
+using System;
+using AutoMapper;
+using CNCSwebApiProject.Dto.DescriptionDtos;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
-using CNCSwebApiProject.Repository;
 
-namespace CNCSwebApiProject.Services.DescriptionService
+namespace CNCSwebApiProject.Services.DescriptionService;
+
+public class DescriptionService(IDescriptionRepository _productDescRepo, IMapper mapper) : IDescriptionService
 {
-    public class DescriptionService : IDescriptionService
+    public async Task<bool> AddAsync(ProductDescriptionCreateDto productDescriptionCreateDto)
     {
-        private readonly IDescriptionRepository _descriptionRepository;
-        private readonly IMapper _mapper;
-
-        public DescriptionService(IDescriptionRepository descriptionRepository,IMapper mapper)
-        {
-            _descriptionRepository = descriptionRepository;
-            _mapper = mapper;
-        }
-
-        public async Task<bool> CreateDescriptionAsync(DescriptionDto descriptionDto)
-        {
-            var descriptionsAsync = await _descriptionRepository.GetDescriptionsAsync();
-            var descriptions = descriptionsAsync
-                .Where(c => c.Description.Trim().ToUpper() == descriptionDto.Description.Trim().ToUpper())
-                .FirstOrDefault();
-            if (descriptions != null) return false;
-            var description = _mapper.Map<TblDescriptions>(descriptionDto);
-            return await _descriptionRepository.CreateDescriptionAsync(description);
-        }
-
-        public async Task<bool> DeleteDescriptionAsync(DescriptionDto descriptionDto)
-        {
-            var description = _mapper.Map<TblDescriptions>(descriptionDto);
-            return await _descriptionRepository.DeleteDescriptionAsync(description);
-        }
-
-        public async Task<bool> DescriptionExistsAsync(int descriptionId)
-        {
-            return await _descriptionRepository.DescriptionExistsAsync(descriptionId);
-        }
-
-        public async Task<DescriptionDto> GetDescriptionAsync(int id)
-        {
-            var description = await _descriptionRepository.GetDescriptionAsync(id);
-            if (description == null) return null;
-            return _mapper.Map<DescriptionDto>(description);
-        }
-
-        public async Task<IEnumerable<DescriptionDto>> GetDescriptionsAsync()
-        {
-            var descriptions = await _descriptionRepository.GetDescriptionsAsync();
-            return _mapper.Map<IEnumerable<DescriptionDto>>(descriptions);
-        }
-
-        public async Task<bool> SaveAsync()
-        {
-            var result = await _descriptionRepository.SaveAsync();
-            return result;
-        }
-
-        public async Task<bool> UpdateDescriptionAsync(DescriptionDto descriptionDto)
-        {
-            var description = _mapper.Map<TblDescriptions>(descriptionDto);
-            return await _descriptionRepository.UpdateDescriptionAsync(description);
-        }
+        return await _productDescRepo.AddAsync(mapper.Map<ProductDescription>(productDescriptionCreateDto));
     }
+
+    public async Task<bool> DeleteAsync(int productDescription_Id)
+    {
+        return await _productDescRepo.DeleteAsync(productDescription_Id);
+    }
+
+    public async Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllAsync()
+    {
+        var obj =  await _productDescRepo.GetAllAsync();
+        return mapper.Map<IEnumerable<DescriptionGetAndUpdateDto>>(obj);
+    }
+
+    public async Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllByProductIdAsync(int Product_Id)
+    {
+        var obj =  await _productDescRepo.GetAllByProductIdAsync(Product_Id);
+        return mapper.Map<IEnumerable<DescriptionGetAndUpdateDto>>(obj);
+    }
+
+    public async Task<DescriptionGetAndUpdateDto?> GetAsync(int id)
+    {
+        var obj = await _productDescRepo.GetAsync(id);
+        return mapper.Map<DescriptionGetAndUpdateDto?>(obj);
+    }
+
+    public async Task<bool> UpdateDetailsAsync(int productDescription_Id, DescriptionGetAndUpdateDto DescriptionGetAndUpdateDto)
+    {
+        var obj = await _productDescRepo.GetAsync(productDescription_Id);
+        if(obj is null) return false;
+
+        obj.Description = DescriptionGetAndUpdateDto.Description;
+
+        return await _productDescRepo.UpdateAsync(obj);
+    }
+
+
 }

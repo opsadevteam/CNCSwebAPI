@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CNCSwebApiProject.Dto.ProductDescriptionDtos;
+namespace CNCSwebApiProject.Dto.DescriptionDtos;
 
 public class ProductDescriptionCreateDto
 {

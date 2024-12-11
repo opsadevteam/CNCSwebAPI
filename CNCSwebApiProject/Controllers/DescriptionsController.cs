@@ -1,0 +1,75 @@
+using CNCSwebApiProject.Dto;
+using CNCSwebApiProject.Dto.DescriptionDtos;
+using CNCSwebApiProject.Services.DescriptionService;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CNCSwebApiProject.Controllers;
+
+[EnableCors("AllowOrigin")]
+[Route("api/v1/[controller]")]
+[ApiController]
+public class DescriptionsController(IDescriptionService _prodDescService) : ControllerBase
+{
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<DescriptionDto>>> GetDescriptionsAsync()
+    {
+        var obj = await _prodDescService.GetAllAsync();
+
+        return obj.Any() ?
+            Ok(obj) :
+            NotFound("No data found.");
+    }
+    
+    // [HttpGet("by-product/{productId:int}")]
+    // public async Task<ActionResult<IEnumerable<DescriptionDto>>> GetDescriptionsByProductIdAsync(int productId)
+    // {
+    //     var descriptions = await _prodDescService.GetAllByProductIdAsync(productId);
+
+    //     return descriptions.Any()
+    //         ? Ok(descriptions)
+    //         : NotFound($"No descriptions found for Product ID {productId}.");
+    // }
+
+    [HttpGet("{Description_Id:int}")]
+    public async Task<ActionResult<DescriptionDto>> GetProductAsync(int Description_Id)
+    {
+        var obj = await _prodDescService.GetAsync(Description_Id);
+
+        return obj is not null ?
+            Ok(obj) :
+            NotFound($"Data with ID {Description_Id} not found.");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddProductDescription(ProductDescriptionCreateDto productDescriptionCreateDto)
+    {
+        if (productDescriptionCreateDto is null)
+            return BadRequest("Invalid data.");
+
+        var isAdded = await _prodDescService.AddAsync(productDescriptionCreateDto);
+        return isAdded ?
+            NoContent() :
+            StatusCode(StatusCodes.Status500InternalServerError, "Error adding description.");
+    }
+
+    [HttpPut("{Description_Id:int}")]
+    public async Task<ActionResult> UpdateProductDescription(int Description_Id, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto)
+    {
+        var isUpdated = await _prodDescService.UpdateDetailsAsync(Description_Id, descriptionGetAndUpdateDto);
+
+        return isUpdated ?
+            NoContent() :
+            NotFound($"Data with {Description_Id} not found.");
+    }
+
+    [HttpDelete("{Description_Id:int}")]
+    public async Task<IActionResult> DeleteUserAccountAsync(int Description_Id)
+    {
+        var isDeleted = await _prodDescService.DeleteAsync(Description_Id);
+        return isDeleted
+            ? NoContent()
+            : NotFound($"User with ID {Description_Id} not found.");
+    }
+}

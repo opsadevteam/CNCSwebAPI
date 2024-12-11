@@ -1,15 +1,15 @@
-﻿using CNCSwebApiProject.Models;
+using System;
+using CNCSwebApiProject.Models;
 
-namespace CNCSwebApiProject.Interface
+namespace CNCSwebApiProject.Interface;
+
+public interface IDescriptionRepository
 {
-    public interface IDescriptionRepository
-    {
-        Task<ICollection<TblDescriptions>> GetDescriptionsAsync();
-        Task<TblDescriptions> GetDescriptionAsync(int id);
-        Task<bool> DescriptionExistsAsync(int descriptionId);
-        Task<bool> CreateDescriptionAsync(TblDescriptions description);
-        Task<bool> UpdateDescriptionAsync(TblDescriptions description);
-        Task<bool> DeleteDescriptionAsync(TblDescriptions description);
+        Task<IEnumerable<ProductDescription>> GetAllAsync(); 
+        Task<IEnumerable<ProductDescription>> GetAllByProductIdAsync(int Product_Id); 
+        Task<ProductDescription?> GetAsync(int id); 
+        Task<bool> AddAsync(ProductDescription productDescription);
+        Task<bool> UpdateAsync(ProductDescription productDescription);
+        Task<bool> DeleteAsync(int id);
         Task<bool> SaveAsync();
-    }
 }

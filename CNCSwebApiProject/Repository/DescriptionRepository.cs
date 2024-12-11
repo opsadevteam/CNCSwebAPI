@@ -1,60 +1,60 @@
-﻿using CNCSwebApiProject.Interface;
+using System;
+using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CNCSwebApiProject.Repository
+namespace CNCSwebApiProject.Repository;
+
+public class DescriptionRepository(CncssystemContext _context) : IDescriptionRepository
 {
-    public class DescriptionRepository : IDescriptionRepository
+   public async Task<bool> AddAsync(ProductDescription productDescription)
     {
-        private readonly CncssystemContext _context;
+        await _context.ProductDescription.AddAsync(productDescription);
+        return await SaveAsync();
+    }
 
-        public DescriptionRepository(CncssystemContext context)
-        {
-            _context = context;
-        }
+   public async Task<bool> DeleteAsync(int id)
+    {
+        var deleted = await _context.ProductDescription
+        .Where(a => a.Id == id)
+        .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
-        public async Task<bool> CreateDescriptionAsync(TblDescriptions description)
-        {
-            await _context.TblDescriptions.AddAsync(description);
-            return await SaveAsync();
-        }
+        return deleted > 0;
+    }
 
-        public async Task<bool> DeleteDescriptionAsync(TblDescriptions description)
-        {
-            var existingDescription = await _context.TblDescriptions.FindAsync(description.Id);
-            if (existingDescription != null)
-            {
-                _context.Entry(existingDescription).State = EntityState.Detached;
-            }
-            _context.TblDescriptions.Remove(description);
-            return await SaveAsync();
-        }
+    public async Task<IEnumerable<ProductDescription>> GetAllAsync()
+    {
+        return await _context.ProductDescription
+        .Where(a => a.IsDeleted == false)
+        .OrderByDescending(pv => pv.Id)
+        .ToListAsync();
+    }
 
-        public async Task<bool> DescriptionExistsAsync(int descriptionId)
-        {
-            return await _context.TblDescriptions.AnyAsync(t => t.Id == descriptionId);
-        }
+    public async Task<IEnumerable<ProductDescription>> GetAllByProductIdAsync(int Product_Id)
+    {
+        return await _context.ProductDescription
+        .Where(a => a.ProductVendorId == Product_Id)
+        .Where(a => a.IsDeleted == false)
+        .OrderByDescending(pv => pv.Id)
+        .ToListAsync();
+    }
 
-        public async Task<TblDescriptions> GetDescriptionAsync(int id)
-        {
-            return await _context.TblDescriptions.FindAsync(id);
-        }
+    public async Task<ProductDescription?> GetAsync(int id)
+    {
+        return await _context.ProductDescription
+        .Where(a => a.Id == id)
+        .Where(a => a.IsDeleted == false)
+        .SingleOrDefaultAsync();
+    }
 
-        public async Task<ICollection<TblDescriptions>> GetDescriptionsAsync()
-        {
-            return await _context.TblDescriptions.ToListAsync();
-        }
+    public async Task<bool> SaveAsync()
+    {
+       return await _context.SaveChangesAsync() > 0;
+    }
 
-        public async Task<bool> SaveAsync()
-        {
-            var changes = await _context.SaveChangesAsync();
-            return changes > 0;
-        }
-
-        public async Task<bool> UpdateDescriptionAsync(TblDescriptions description)
-        {
-            _context.TblDescriptions.Update(description);
-            return await SaveAsync();
-        }
+   public async Task<bool> UpdateAsync(ProductDescription productDescription)
+    {
+        _context.Entry(productDescription).State = EntityState.Modified;
+        return await SaveAsync();
     }
 }

@@ -1,8 +1,8 @@
 using System;
 
-namespace CNCSwebApiProject.Dto.ProductDescriptionDtos;
+namespace CNCSwebApiProject.Dto.DescriptionDtos;
 
-public class ProductDescriptionGetAndUpdateDto
+public class DescriptionGetAndUpdateDto
 {
     public int Id { get; set; }
     public string Description { get; set; } = null!;

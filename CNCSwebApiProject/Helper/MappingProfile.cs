@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CNCSwebApiProject.Dto;
-using CNCSwebApiProject.Dto.ProductDescriptionDtos;
-using CNCSwebApiProject.Dto.ProductVendorDtos;
+using CNCSwebApiProject.Dto.DescriptionDtos;
+using CNCSwebApiProject.Dto.ProductDtos;
 using CNCSwebApiProject.Dto.UserAccountsDtos;
 using CNCSwebApiProject.Models;
 
@@ -31,14 +31,15 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblActivityLog, ActivityLogGetDto>();
             CreateMap<TblActivityLog, ActivityLogInsertDto>().ReverseMap();
 
-            CreateMap<ProductVendor, ProductVendorNewDto>()
+            CreateMap<ProductVendor, ProductDto>();
+            CreateMap<ProductVendor, ProductWithDescriptionDto>()
             .ForMember(dest => dest.Descriptions, opt => opt.MapFrom(src => src.ProductDescription))
             .ReverseMap();
 
-            CreateMap<ProductVendorCreateDto, ProductVendor>();
-            CreateMap<ProductVendorUpdateDto, ProductVendor>();
+            CreateMap<ProductCreateDto, ProductVendor>();
+            CreateMap<ProductUpdateDto, ProductVendor>();
 
-            CreateMap<ProductDescription, ProductDescriptionGetAndUpdateDto>();
+            CreateMap<ProductDescription, DescriptionGetAndUpdateDto>();
             CreateMap<ProductDescriptionCreateDto, ProductDescription>();
 
             // Mapping for TblTransactions to TransactionDto

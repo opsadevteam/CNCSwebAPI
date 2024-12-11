@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CNCSwebApiProject.Repository;
 
-public class ProductVendorRepositoryNew(CncssystemContext _context) : IProductVendorRepositoryNew
+public class ProductRepository(CncssystemContext _context) : IProductRepository
 {
     public async Task<bool> AddAsync(ProductVendor productVendor)
     {
@@ -22,23 +22,39 @@ public class ProductVendorRepositoryNew(CncssystemContext _context) : IProductVe
         return deleted > 0;
     }
 
-    public async Task<IEnumerable<ProductVendor>> GetAllAsync()
+    public async Task<IEnumerable<ProductVendor>> GetProductsAsync()
     {
         return await _context.ProductVendor
         .Where(pv => pv.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
-        .Include(pv => pv.ProductDescription)
         .ToListAsync();
     }
 
-    public async Task<ProductVendor?> GetAsync(int id)
+    // public async Task<IEnumerable<ProductVendor>> GetAllProdWithDescAsync()
+    // {
+    //     return await _context.ProductVendor
+    //     .Where(pv => pv.IsDeleted == false)
+    //     .OrderByDescending(pv => pv.Id)
+    //     .Include(pv => pv.ProductDescription)
+    //     .ToListAsync();
+    // }
+
+    public async Task<ProductVendor?> GetProductAsync(int id)
     {
         return await _context.ProductVendor
         .Where(a => a.Id == id)
         .Where(a => a.IsDeleted == false)
-        .Include(pv => pv.ProductDescription)
         .SingleOrDefaultAsync();
     }
+
+    // public async Task<ProductVendor?> GetProdWithDescAsync(int id)
+    // {
+    //     return await _context.ProductVendor
+    //     .Where(a => a.Id == id)
+    //     .Where(a => a.IsDeleted == false)
+    //     .Include(pv => pv.ProductDescription)
+    //     .SingleOrDefaultAsync();
+    // }
 
     public async Task<bool> IsNameExists(string Name, int id)
     {
