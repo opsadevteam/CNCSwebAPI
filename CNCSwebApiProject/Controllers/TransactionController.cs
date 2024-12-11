@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CNCSwebApiProject.Controllers
 {
-    [EnableCors("AllowOrigin")] //tag1
+    [Authorize]
+    [EnableCors("AllowOrigin")] 
     [Route("api/v1/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -33,7 +34,7 @@ namespace CNCSwebApiProject.Controllers
             return Ok(transactionsDto);
         }
 
-        [Authorize]
+     
         [HttpGet("{transactionId}")]
         [ProducesResponseType(200, Type = typeof(TblTransactions))]
         [ProducesResponseType(400)]

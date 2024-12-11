@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using CNCSwebApiProject.Repository;
 using CNCSwebApiProject.Services.DescriptionService;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace CNCSwebApiProject.Controllers
 {
+    [Authorize]
     [EnableCors("AllowOrigin")]
     [Route("api/v1/[controller]")]
     [ApiController]
