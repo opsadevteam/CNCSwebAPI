@@ -5,6 +5,51 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/v1/Account/Login": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "Username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Password",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/ActivityLog": {
       "get": {
         "tags": [
@@ -18,7 +63,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TblActivityLog"
+                    "$ref": "#/components/schemas/ActivityLogGetDto"
                   }
                 }
               },
@@ -26,7 +71,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TblActivityLog"
+                    "$ref": "#/components/schemas/ActivityLogGetDto"
                   }
                 }
               },
@@ -34,7 +79,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TblActivityLog"
+                    "$ref": "#/components/schemas/ActivityLogGetDto"
                   }
                 }
               }
@@ -1392,10 +1437,10 @@
         }
       }
     },
-    "/api/v1/UserAccount": {
+    "/api/v1/UserAccounts": {
       "get": {
         "tags": [
-          "UserAccount"
+          "UserAccounts"
         ],
         "responses": {
           "200": {
@@ -1405,7 +1450,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/UserAccountDto"
+                    "$ref": "#/components/schemas/UserAccountListDto"
                   }
                 }
               },
@@ -1413,7 +1458,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/UserAccountDto"
+                    "$ref": "#/components/schemas/UserAccountListDto"
                   }
                 }
               },
@@ -1421,7 +1466,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/UserAccountDto"
+                    "$ref": "#/components/schemas/UserAccountListDto"
                   }
                 }
               }
@@ -1431,23 +1476,23 @@
       },
       "post": {
         "tags": [
-          "UserAccount"
+          "UserAccounts"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
+                "$ref": "#/components/schemas/UserAccountCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
+                "$ref": "#/components/schemas/UserAccountCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
+                "$ref": "#/components/schemas/UserAccountCreateDto"
               }
             }
           }
@@ -1459,14 +1504,14 @@
         }
       }
     },
-    "/api/v1/UserAccount/{id}": {
+    "/api/v1/UserAccounts/{UserAccount_Id}": {
       "get": {
         "tags": [
-          "UserAccount"
+          "UserAccounts"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "UserAccount_Id",
             "in": "path",
             "required": true,
             "schema": {
@@ -1481,70 +1526,30 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserAccountDto"
+                  "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserAccountDto"
+                  "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserAccountDto"
+                  "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "UserAccount"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TblUserAccount"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
       "delete": {
         "tags": [
-          "UserAccount"
+          "UserAccounts"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "UserAccount_Id",
             "in": "path",
             "required": true,
             "schema": {
@@ -1559,10 +1564,228 @@
           }
         }
       }
+    },
+    "/api/v1/UserAccounts/{UserAccount_Id}/Details": {
+      "put": {
+        "tags": [
+          "UserAccounts"
+        ],
+        "parameters": [
+          {
+            "name": "UserAccount_Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountGetAndUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/UserAccounts/{UserAccount_Id}/ChangePassword": {
+      "put": {
+        "tags": [
+          "UserAccounts"
+        ],
+        "parameters": [
+          {
+            "name": "UserAccount_Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountChangePasswordDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountChangePasswordDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserAccountChangePasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/WorkloadStatistics/productsummary": {
+      "get": {
+        "tags": [
+          "WorkloadStatistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/WorkloadStatistics/productsummary/total": {
+      "get": {
+        "tags": [
+          "WorkloadStatistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/WorkloadStatistics/usercount": {
+      "get": {
+        "tags": [
+          "WorkloadStatistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/WorkloadStatistics/transactionperday": {
+      "get": {
+        "tags": [
+          "WorkloadStatistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/WorkloadStatistics/description-table": {
+      "get": {
+        "tags": [
+          "WorkloadStatistics"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DescriptionTableDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DescriptionTableDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DescriptionTableDto"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ActivityLogGetDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "logActivity": {
+            "type": "string",
+            "nullable": true
+          },
+          "logUser": {
+            "type": "string",
+            "nullable": true
+          },
+          "logTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "logDetails": {
+            "type": "string",
+            "nullable": true
+          },
+          "userGroup": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DescriptionDataPoint": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "callCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eMailCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "qqCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "DescriptionDto": {
         "type": "object",
         "properties": {
@@ -1594,6 +1817,19 @@
           },
           "logId": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DescriptionTableDto": {
+        "type": "object",
+        "properties": {
+          "dataPoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DescriptionDataPoint"
+            },
             "nullable": true
           }
         },
@@ -1700,6 +1936,28 @@
       },
       "ITransactionService": {
         "type": "object",
+        "additionalProperties": false
+      },
+      "LoginResponseModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userGroup": {
+            "type": "string",
+            "nullable": true
+          }
+        },
         "additionalProperties": false
       },
       "PhoneRecordsDeleteDto": {
@@ -1845,41 +2103,6 @@
             "nullable": true
           },
           "logId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TblActivityLog": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "logActivity": {
-            "type": "string",
-            "nullable": true
-          },
-          "logUser": {
-            "type": "string",
-            "nullable": true
-          },
-          "logTime": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "logDetails": {
-            "type": "string",
-            "nullable": true
-          },
-          "logLocation": {
-            "type": "string",
-            "nullable": true
-          },
-          "userGroup": {
             "type": "string",
             "nullable": true
           }
@@ -2172,53 +2395,6 @@
         },
         "additionalProperties": false
       },
-      "TblUserAccount": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "userGroup": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "addedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "dateAdded": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "isDeleted": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "logId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "TransactionDto": {
         "type": "object",
         "properties": {
@@ -2386,7 +2562,96 @@
         },
         "additionalProperties": false
       },
-      "UserAccountDto": {
+      "UserAccountChangePasswordDto": {
+        "required": [
+          "newPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "newPassword": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserAccountCreateDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "userGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "addedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateAdded": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "logId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserAccountGetAndUpdateDto": {
+        "required": [
+          "fullName",
+          "password",
+          "status",
+          "userGroup",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "username": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "userGroup": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserAccountListDto": {
         "required": [
           "fullName",
           "password",
@@ -2428,6 +2693,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter your JWT Access Token",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

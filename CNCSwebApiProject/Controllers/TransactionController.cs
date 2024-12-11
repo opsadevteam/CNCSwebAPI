@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using CNCSwebApiProject.Services.TransactionService;
 using CNCSwebApiProject.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace CNCSwebApiProject.Controllers
@@ -32,6 +33,7 @@ namespace CNCSwebApiProject.Controllers
             return Ok(transactionsDto);
         }
 
+        [Authorize]
         [HttpGet("{transactionId}")]
         [ProducesResponseType(200, Type = typeof(TblTransactions))]
         [ProducesResponseType(400)]
