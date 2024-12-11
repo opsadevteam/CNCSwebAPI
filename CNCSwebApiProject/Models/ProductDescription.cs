@@ -19,8 +19,7 @@ public class ProductDescription
 
     public bool? IsDeleted { get; set; }
 
-    [Required]
-    public required int ProductVendorId { get; set; }
+    public int ProductVendorId { get; set; }
 
     public ProductVendor ProductVendor { get; set; } = null!;
 

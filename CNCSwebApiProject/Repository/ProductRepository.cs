@@ -27,6 +27,11 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(pv => pv.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
+        .Select(pv => new ProductVendor
+        {
+            Id = pv.Id,
+            Name = pv.Name
+        })
         .ToListAsync();
     }
 
@@ -44,6 +49,11 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(a => a.Id == id)
         .Where(a => a.IsDeleted == false)
+        .Select(pv => new ProductVendor
+        {
+            Id = pv.Id,
+            Name = pv.Name
+        })
         .SingleOrDefaultAsync();
     }
 

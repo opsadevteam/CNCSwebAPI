@@ -27,6 +27,11 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         return await _context.ProductDescription
         .Where(a => a.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
+        .Select(pd => new ProductDescription
+        {
+            Id = pd.Id,
+            Description = pd.Description
+        })
         .ToListAsync();
     }
 
@@ -36,6 +41,11 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         .Where(a => a.ProductVendorId == Product_Id)
         .Where(a => a.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
+        .Select(pd => new ProductDescription
+        {
+            Id = pd.Id,
+            Description = pd.Description
+        })
         .ToListAsync();
     }
 
@@ -44,6 +54,11 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         return await _context.ProductDescription
         .Where(a => a.Id == id)
         .Where(a => a.IsDeleted == false)
+        .Select(pd => new ProductDescription
+        {
+            Id = pd.Id,
+            Description = pd.Description
+        })
         .SingleOrDefaultAsync();
     }
 
