@@ -8,48 +8,42 @@ namespace CNCSwebApiProject.Services.DescriptionService;
 
 public class DescriptionService(IDescriptionRepository _productDescRepo, IMapper mapper) : IDescriptionService
 {
-    public async Task<bool> AddAsync(ProductDescriptionCreateDto productDescriptionCreateDto)
+    public async Task<bool> AddDescriptionAsync(ProductDescriptionCreateDto productDescriptionCreateDto)
     {
-        return await _productDescRepo.AddAsync(mapper.Map<ProductDescription>(productDescriptionCreateDto));
+        return await _productDescRepo.AddDescriptionAsync(mapper.Map<ProductDescription>(productDescriptionCreateDto));
     }
 
-    public async Task<bool> DeleteAsync(int productDescription_Id)
+    public async Task<bool> DeleteDescriptionAsync(int descriptionId)
     {
-        return await _productDescRepo.DeleteAsync(productDescription_Id);
+        return await _productDescRepo.DeleteDescriptionAsync(descriptionId);
     }
 
-    public async Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllAsync()
+    public async Task<DescriptionDto?> GetDescriptionAsync(int descriptionId)
     {
-        var obj =  await _productDescRepo.GetAllAsync();
-        return mapper.Map<IEnumerable<DescriptionGetAndUpdateDto>>(obj);
+         var obj = await _productDescRepo.GetDescriptionAsync(descriptionId);
+        return mapper.Map<DescriptionDto?>(obj);
     }
 
-    public async Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllByProductIdAsync(int Product_Id)
+    public async Task<IEnumerable<DescriptionDto>> GetDescriptionsAsync()
     {
-        var obj =  await _productDescRepo.GetAllByProductIdAsync(Product_Id);
-        return mapper.Map<IEnumerable<DescriptionGetAndUpdateDto>>(obj);
+                var obj =  await _productDescRepo.GetDescriptionsAsync();
+        return mapper.Map<IEnumerable<DescriptionDto>>(obj);
     }
 
-    public async Task<DescriptionGetAndUpdateDto?> GetAsync(int id)
+    public async Task<bool> IsDescriptionExists(int descriptionId, string description, int productId)
     {
-        var obj = await _productDescRepo.GetAsync(id);
-        return mapper.Map<DescriptionGetAndUpdateDto?>(obj);
+        return await _productDescRepo.IsDescriptionExists(descriptionId, description, productId);
     }
 
-    public async Task<bool> IsDescriptionExists(int descriptionId, string name, int productId)
+    public async Task<bool> UpdateDescriptionAsync(int descriptionId, DescriptionDto descriptionDto)
     {
-        return await _productDescRepo.IsDescriptionExists(descriptionId, name, productId);
-    }
-
-    public async Task<bool> UpdateDetailsAsync(int productDescription_Id, DescriptionGetAndUpdateDto DescriptionGetAndUpdateDto)
-    {
-        var obj = await _productDescRepo.GetAsync(productDescription_Id);
+       var obj = await _productDescRepo.GetDescriptionAsync(descriptionId);
         if(obj is null) return false;
+        if(string.IsNullOrWhiteSpace(descriptionDto.Description)) return false;
 
-        obj.Description = DescriptionGetAndUpdateDto.Description;
+        obj.Description = descriptionDto.Description;
 
-        return await _productDescRepo.UpdateAsync(obj);
+        return await _productDescRepo.UpdateDescriptionAsync(obj);
     }
-
 
 }

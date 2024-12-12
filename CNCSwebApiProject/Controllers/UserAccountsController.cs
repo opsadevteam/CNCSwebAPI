@@ -49,7 +49,7 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
     }
 
 
-    [HttpPut("{UserAccount_Id}/Details")]
+    [HttpPut("{UserAccount_Id}")]
     public async Task<IActionResult> UpdateUserAccountDetailsAsync(int UserAccount_Id, UserAccountGetAndUpdateDto userAccount)
     {
         if (await _UserAccountService.IsUserExistsAsync(userAccount.Username!, UserAccount_Id!))

@@ -15,7 +15,7 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DescriptionDto>>> GetDescriptionsAsync()
     {
-        var obj = await _prodDescService.GetAllAsync();
+        var obj = await _prodDescService.GetDescriptionsAsync();
 
         return obj.Any() ?
             Ok(obj) :
@@ -33,9 +33,9 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     // }
 
     [HttpGet("{Description_Id:int}")]
-    public async Task<ActionResult<DescriptionDto>> GetProductAsync(int Description_Id)
+    public async Task<ActionResult<DescriptionDto>> GetDescriptionAsync(int Description_Id)
     {
-        var obj = await _prodDescService.GetAsync(Description_Id);
+        var obj = await _prodDescService.GetDescriptionAsync(Description_Id);
 
         return obj is not null ?
             Ok(obj) :
@@ -43,7 +43,7 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddProductDescription(ProductDescriptionCreateDto productDescriptionCreateDto)
+    public async Task<IActionResult> AddDescription(ProductDescriptionCreateDto productDescriptionCreateDto)
     {
         if (productDescriptionCreateDto is null)
             return BadRequest("Invalid data.");
@@ -51,19 +51,19 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
         if (await _prodDescService.IsDescriptionExists(0, productDescriptionCreateDto.Description, productDescriptionCreateDto.ProductVendorId))
         return Conflict("Description is already taken.");
 
-        var isAdded = await _prodDescService.AddAsync(productDescriptionCreateDto);
+        var isAdded = await _prodDescService.AddDescriptionAsync(productDescriptionCreateDto);
         return isAdded ?
             NoContent() :
             StatusCode(StatusCodes.Status500InternalServerError, "Error adding description.");
     }
 
     [HttpPut("{Description_Id:int}")]
-    public async Task<ActionResult> UpdateProductDescription(int Description_Id, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto)
+    public async Task<ActionResult> UpdateDescription(int Description_Id, DescriptionDto descriptionDto, int Product_Id)
     {
     
-        var isUpdated = await _prodDescService.UpdateDetailsAsync(Description_Id, descriptionGetAndUpdateDto);
+        var isUpdated = await _prodDescService.UpdateDescriptionAsync(Description_Id, descriptionDto);
 
-        if (await _prodDescService.IsDescriptionExists(Description_Id, descriptionGetAndUpdateDto.Description, descriptionGetAndUpdateDto.ProductVendorId))
+        if (await _prodDescService.IsDescriptionExists(Description_Id, descriptionDto.Description, Product_Id))
         return Conflict("Description is already taken.");
 
         return isUpdated ?
@@ -72,9 +72,9 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     }
 
     [HttpDelete("{Description_Id:int}")]
-    public async Task<IActionResult> DeleteUserAccountAsync(int Description_Id)
+    public async Task<IActionResult> DeleteDescriptionAsync(int Description_Id)
     {
-        var isDeleted = await _prodDescService.DeleteAsync(Description_Id);
+        var isDeleted = await _prodDescService.DeleteDescriptionAsync(Description_Id);
         return isDeleted
             ? NoContent()
             : NotFound($"User with ID {Description_Id} not found.");

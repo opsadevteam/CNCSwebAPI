@@ -1,4 +1,6 @@
-﻿namespace CNCSwebApiProject.Dto
+﻿using CNCSwebApiProject.Dto.DescriptionDtos;
+
+namespace CNCSwebApiProject.Dto
 {
     public class TransactionDetaildDto
     {

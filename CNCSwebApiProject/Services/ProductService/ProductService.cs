@@ -9,14 +9,14 @@ namespace CNCSwebApiProject.Services.ProductService;
 
 public class ProductService(IProductRepository _productRepository, IMapper mapper) : IProductService
 {
-    public async Task<bool> AddAsync(ProductCreateDto productVendorCreateDto)
+    public async Task<bool> AddAProductsync(ProductCreateDto productVendorCreateDto)
     {
-        return await _productRepository.AddAsync(mapper.Map<ProductVendor>(productVendorCreateDto));
+        return await _productRepository.AddProductAsync(mapper.Map<ProductVendor>(productVendorCreateDto));
     }
 
-    public async Task<bool> DeleteAsync(int productVendor_Id)
+    public async Task<bool> DeleteProductAsync(int productId)
     {
-        return await _productRepository.DeleteAsync(productVendor_Id);
+        return await _productRepository.DeleteProductAsync(productId);
     }
 
     public async Task<IEnumerable<ProductDto>> GetProductsAsync()
@@ -25,36 +25,36 @@ public class ProductService(IProductRepository _productRepository, IMapper mappe
         return mapper.Map<IEnumerable<ProductDto>>(obj);
     }
 
-    // public async Task<IEnumerable<ProductWithDescriptionDto>> GetAllProdWithDescAsync()
-    // {
-    //     var obj = await _productRepository.GetAllProdWithDescAsync();
-    //     return mapper.Map<IEnumerable<ProductWithDescriptionDto>>(obj);
-    // }
-
-    public async Task<ProductDto?> GetProductAsync(int productVendor_Id)
+    public async Task<IEnumerable<ProductDescriptionsDto>> GetProductsDescriptionsAsync()
     {
-        var obj = await _productRepository.GetProductAsync(productVendor_Id);
+        var obj = await _productRepository.GetProductsDescriptionsAsync();
+        return mapper.Map<IEnumerable<ProductDescriptionsDto>>(obj);
+    }
+
+    public async Task<ProductDto?> GetProductAsync(int productId)
+    {
+        var obj = await _productRepository.GetProductAsync(productId);
         return mapper.Map<ProductDto>(obj);
     }
 
-    // public async Task<ProductWithDescriptionDto?> GetProdWithDescAsync(int productVendor_Id)
-    // {
-    //     var obj = await _productRepository.GetProdWithDescAsync(productVendor_Id);
-    //     return mapper.Map<ProductWithDescriptionDto>(obj);
-    // }
-
-    public async Task<bool> IsNameExists(string Name, int productVendor_Id)
+    public async Task<ProductDescriptionsDto?> GetProductDescriptionsAsync(int productId)
     {
-        return await _productRepository.IsNameExists(Name, productVendor_Id);
+        var obj = await _productRepository.GetProductDescriptionsAsync(productId);
+        return mapper.Map<ProductDescriptionsDto>(obj);
     }
 
-    public async Task<bool> UpdateDetailsAsync(int productVendor_Id, ProductUpdateDto productVendorUpdateDto)
+    public async Task<bool> IsProductNameExists(string productName, int productId)
     {
-        var obj = await _productRepository.GetProductAsync(productVendor_Id);
+        return await _productRepository.IsProductNameExists(productName, productId);
+    }
+
+    public async Task<bool> UpdateProductAsync(int productId, string productName)
+    {
+        var obj = await _productRepository.GetProductAsync(productId);
         if(obj is null) return false;
 
-        obj.Name = productVendorUpdateDto.Name;
+        obj.Name = productName;
 
-        return await _productRepository.UpdateAsync(obj);   
+        return await _productRepository.UpdateProductAsync(obj);   
     }
 }

@@ -7,22 +7,22 @@ namespace CNCSwebApiProject.Repository;
 
 public class ProductRepository(CncssystemContext _context) : IProductRepository
 {
-    public async Task<bool> AddAsync(ProductVendor productVendor)
+    public async Task<bool> AddProductAsync(ProductVendor product)
     {
-        await _context.ProductVendor.AddAsync(productVendor);
-        return await SaveAsync();
+        await _context.ProductVendor.AddAsync(product);
+        return await SaveProductAsync();
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteProductAsync(int productId)
     {
         var deleted = await _context.ProductVendor
-            .Where(a => a.Id == id)
+            .Where(a => a.Id == productId)
             .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
         if (deleted == 0) return false;
 
         var deleteDescriptions = await _context.ProductDescription
-            .Where(a => a.ProductVendorId == id)
+            .Where(a => a.ProductVendorId == productId)
             .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
         return deleted > 0;
@@ -36,47 +36,47 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         .ToListAsync();
     }
 
-    // public async Task<IEnumerable<ProductVendor>> GetAllProdWithDescAsync()
-    // {
-    //     return await _context.ProductVendor
-    //     .Where(pv => pv.IsDeleted == false)
-    //     .OrderByDescending(pv => pv.Id)
-    //     .Include(pv => pv.ProductDescription)
-    //     .ToListAsync();
-    // }
-
-    public async Task<ProductVendor?> GetProductAsync(int id)
+    public async Task<IEnumerable<ProductVendor>> GetProductsDescriptionsAsync()
     {
         return await _context.ProductVendor
-        .Where(a => a.Id == id)
+        .Where(pv => pv.IsDeleted == false)
+        .OrderByDescending(pv => pv.Id)
+        .Include(pv => pv.ProductDescription)
+        .ToListAsync();
+    }
+
+    public async Task<ProductVendor?> GetProductAsync(int productId)
+    {
+        return await _context.ProductVendor
+        .Where(a => a.Id == productId)
         .Where(a => a.IsDeleted == false)
         .SingleOrDefaultAsync();
     }
 
-    // public async Task<ProductVendor?> GetProdWithDescAsync(int id)
-    // {
-    //     return await _context.ProductVendor
-    //     .Where(a => a.Id == id)
-    //     .Where(a => a.IsDeleted == false)
-    //     .Include(pv => pv.ProductDescription)
-    //     .SingleOrDefaultAsync();
-    // }
-
-    public async Task<bool> IsNameExists(string Name, int id)
+    public async Task<ProductVendor?> GetProductDescriptionsAsync(int productId)
     {
-        return await _context.ProductVendor.AnyAsync(x => 
-        x.Name!.ToLower().Trim() == Name.ToLower().Trim() && 
-        x.Id != id && x.IsDeleted == false);
+        return await _context.ProductVendor
+        .Where(a => a.Id == productId)
+        .Where(a => a.IsDeleted == false)
+        .Include(pv => pv.ProductDescription)
+        .SingleOrDefaultAsync();
     }
 
-    public async Task<bool> SaveAsync()
+    public async Task<bool> IsProductNameExists(string productName, int productId)
+    {
+        return await _context.ProductVendor.AnyAsync(x => 
+        x.Name!.ToLower().Trim() == productName.ToLower().Trim() && 
+        x.Id != productId && x.IsDeleted == false);
+    }
+
+    public async Task<bool> SaveProductAsync()
     {
         return await _context.SaveChangesAsync() > 0;
     }
 
-    public async Task<bool> UpdateAsync(ProductVendor productVendor)
+    public async Task<bool> UpdateProductAsync(ProductVendor product)
     {
-        _context.Entry(productVendor).State = EntityState.Modified;
-        return await SaveAsync();
+        _context.Entry(product).State = EntityState.Modified;
+        return await SaveProductAsync();
     }
 }

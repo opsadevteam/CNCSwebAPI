@@ -5,12 +5,12 @@ namespace CNCSwebApiProject.Interface;
 
 public interface IDescriptionRepository
 {
-        Task<IEnumerable<ProductDescription>> GetAllAsync(); 
-        Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int productId); 
-        Task<ProductDescription?> GetAsync(int id); 
-        Task<bool> IsDescriptionExists(int descriptionId, string name, int productId); 
-        Task<bool> AddAsync(ProductDescription productDescription);
-        Task<bool> UpdateAsync(ProductDescription productDescription);
-        Task<bool> DeleteAsync(int id);
-        Task<bool> SaveAsync();
+        Task<IEnumerable<ProductDescription>> GetDescriptionsAsync(); 
+        // Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int productId); 
+        Task<ProductDescription?> GetDescriptionAsync(int descriptionId); 
+        Task<bool> IsDescriptionExists(int descriptionId, string description, int productId); 
+        Task<bool> AddDescriptionAsync(ProductDescription productDescription);
+        Task<bool> UpdateDescriptionAsync(ProductDescription productDescription);
+        Task<bool> DeleteDescriptionAsync(int descriptionId);
+        Task<bool> SaveDescriptionAsync();
 }

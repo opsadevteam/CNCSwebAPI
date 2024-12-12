@@ -6,12 +6,12 @@ namespace CNCSwebApiProject.Services.ProductService;
 public interface IProductService
 {
     Task<IEnumerable<ProductDto>> GetProductsAsync(); 
-    Task<ProductDto?> GetProductAsync(int productVendor_Id); 
-    // Task<IEnumerable<ProductWithDescriptionDto>> GetAllProdWithDescAsync(); 
-    // Task<ProductWithDescriptionDto?> GetProdWithDescAsync(int productVendor_Id); 
-    Task<bool> AddAsync(ProductCreateDto productVendorCreateDto); 
-    Task<bool> UpdateDetailsAsync(int productVendor_Id, ProductUpdateDto productVendorUpdateDto); 
-    Task<bool> DeleteAsync(int productVendor_Id);
-    Task<bool> IsNameExists(string Name, int productVendor_Id);
+    Task<ProductDto?> GetProductAsync(int productId); 
+    Task<IEnumerable<ProductDescriptionsDto>> GetProductsDescriptionsAsync(); 
+    Task<ProductDescriptionsDto?> GetProductDescriptionsAsync(int productId); 
+    Task<bool> AddAProductsync(ProductCreateDto productVendorCreateDto); 
+    Task<bool> UpdateProductAsync(int productId, string productName); 
+    Task<bool> DeleteProductAsync(int productId);
+    Task<bool> IsProductNameExists(string productName, int productId);
 
 }

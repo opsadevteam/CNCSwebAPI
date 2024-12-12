@@ -7,22 +7,22 @@ namespace CNCSwebApiProject.Repository;
 
 public class DescriptionRepository(CncssystemContext _context) : IDescriptionRepository
 {
-   public async Task<bool> AddAsync(ProductDescription productDescription)
+   public async Task<bool> AddDescriptionAsync(ProductDescription productDescription)
     {
         await _context.ProductDescription.AddAsync(productDescription);
-        return await SaveAsync();
+        return await SaveDescriptionAsync();
     }
 
-   public async Task<bool> DeleteAsync(int id)
+   public async Task<bool> DeleteDescriptionAsync(int descriptionId)
     {
         var deleted = await _context.ProductDescription
-        .Where(a => a.Id == id)
+        .Where(a => a.Id == descriptionId)
         .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
         return deleted > 0;
     }
 
-    public async Task<IEnumerable<ProductDescription>> GetAllAsync()
+    public async Task<IEnumerable<ProductDescription>> GetDescriptionsAsync()
     {
         return await _context.ProductDescription
         .Where(a => a.IsDeleted == false)
@@ -35,25 +35,25 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         .ToListAsync();
     }
 
-    public async Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int Product_Id)
-    {
+    // public async Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int Product_Id)
+    // {
 
-        return await _context.ProductDescription
-        .Where(a => a.ProductVendorId == Product_Id)
-        .Where(a => a.IsDeleted == false)
-        .OrderByDescending(pv => pv.Id)
-        .Select(pd => new ProductDescription
-        {
-            Id = pd.Id,
-            Description = pd.Description
-        })
-        .ToListAsync();
-    }
+    //     return await _context.ProductDescription
+    //     .Where(a => a.ProductVendorId == Product_Id)
+    //     .Where(a => a.IsDeleted == false)
+    //     .OrderByDescending(pv => pv.Id)
+    //     .Select(pd => new ProductDescription
+    //     {
+    //         Id = pd.Id,
+    //         Description = pd.Description
+    //     })
+    //     .ToListAsync();
+    // }
 
-    public async Task<ProductDescription?> GetAsync(int id)
+    public async Task<ProductDescription?> GetDescriptionAsync(int descriptionId)
     {
         return await _context.ProductDescription
-        .Where(a => a.Id == id)
+        .Where(a => a.Id == descriptionId)
         .Where(a => a.IsDeleted == false)
         .Select(pd => new ProductDescription
         {
@@ -63,23 +63,23 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         .SingleOrDefaultAsync();
     }
 
-    public async Task<bool> IsDescriptionExists(int descriptionId, string name, int productId)
+    public async Task<bool> IsDescriptionExists(int descriptionId, string description, int productId)
     {
         return await _context.ProductDescription.AnyAsync(x => 
-        x.Description!.ToLower().Trim() == name.ToLower().Trim() && 
+        x.Description!.ToLower().Trim() == description.ToLower().Trim() && 
         x.Id != descriptionId &&
         x.ProductVendorId == productId && 
         x.IsDeleted == false);
     }
 
-    public async Task<bool> SaveAsync()
+    public async Task<bool> SaveDescriptionAsync()
     {
        return await _context.SaveChangesAsync() > 0;
     }
 
-   public async Task<bool> UpdateAsync(ProductDescription productDescription)
+   public async Task<bool> UpdateDescriptionAsync(ProductDescription productDescription)
     {
         _context.Entry(productDescription).State = EntityState.Modified;
-        return await SaveAsync();
+        return await SaveDescriptionAsync();
     }
 }

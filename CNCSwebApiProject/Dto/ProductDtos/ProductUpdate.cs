@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CNCSwebApiProject.Dto.ProductDtos;
 
-public class ProductUpdateDto
+public class ProductUpdate
 {
     [Required]
-    public required string Name { get; set; }
+    public string Name { get; set; } = null!;
+
 }
