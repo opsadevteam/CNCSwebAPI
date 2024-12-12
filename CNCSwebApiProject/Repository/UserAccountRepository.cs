@@ -53,7 +53,7 @@ public class UserAccountRepository(CncssystemContext context) : IUserAccountRepo
     {
 
         return await context.TblUserAccount
-            .AnyAsync(x => x.Username!.ToLower() == Username.ToLower() && x.Id != id && x.IsDeleted == false);
+            .AnyAsync(x => x.Username!.ToLower().Trim() == Username.ToLower().Trim() && x.Id != id && x.IsDeleted == false);
     }
 
     public async Task<bool> SaveAllAsync()

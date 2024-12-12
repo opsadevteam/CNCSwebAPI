@@ -16,8 +16,14 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
     public async Task<bool> DeleteAsync(int id)
     {
         var deleted = await _context.ProductVendor
-        .Where(a => a.Id == id)
-        .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
+            .Where(a => a.Id == id)
+            .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
+
+        if (deleted == 0) return false;
+
+        var deleteDescriptions = await _context.ProductDescription
+            .Where(a => a.ProductVendorId == id)
+            .ExecuteUpdateAsync(x => x.SetProperty(x => x.IsDeleted, true));
 
         return deleted > 0;
     }
@@ -27,11 +33,6 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(pv => pv.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
-        .Select(pv => new ProductVendor
-        {
-            Id = pv.Id,
-            Name = pv.Name
-        })
         .ToListAsync();
     }
 
@@ -49,11 +50,6 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(a => a.Id == id)
         .Where(a => a.IsDeleted == false)
-        .Select(pv => new ProductVendor
-        {
-            Id = pv.Id,
-            Name = pv.Name
-        })
         .SingleOrDefaultAsync();
     }
 
@@ -68,7 +64,9 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
 
     public async Task<bool> IsNameExists(string Name, int id)
     {
-        return await _context.ProductVendor.AnyAsync(x => x.Name!.ToLower() == Name.ToLower() && x.Id != id && x.IsDeleted == false);
+        return await _context.ProductVendor.AnyAsync(x => 
+        x.Name!.ToLower().Trim() == Name.ToLower().Trim() && 
+        x.Id != id && x.IsDeleted == false);
     }
 
     public async Task<bool> SaveAsync()

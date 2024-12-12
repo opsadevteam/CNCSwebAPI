@@ -35,8 +35,9 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         .ToListAsync();
     }
 
-    public async Task<IEnumerable<ProductDescription>> GetAllByProductIdAsync(int Product_Id)
+    public async Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int Product_Id)
     {
+
         return await _context.ProductDescription
         .Where(a => a.ProductVendorId == Product_Id)
         .Where(a => a.IsDeleted == false)
@@ -60,6 +61,15 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
             Description = pd.Description
         })
         .SingleOrDefaultAsync();
+    }
+
+    public async Task<bool> IsDescriptionExists(int descriptionId, string name, int productId)
+    {
+        return await _context.ProductDescription.AnyAsync(x => 
+        x.Description!.ToLower().Trim() == name.ToLower().Trim() && 
+        x.Id != descriptionId &&
+        x.ProductVendorId == productId && 
+        x.IsDeleted == false);
     }
 
     public async Task<bool> SaveAsync()

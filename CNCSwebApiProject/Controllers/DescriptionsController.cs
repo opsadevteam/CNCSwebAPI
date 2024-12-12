@@ -48,6 +48,9 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
         if (productDescriptionCreateDto is null)
             return BadRequest("Invalid data.");
 
+        if (await _prodDescService.IsDescriptionExists(0, productDescriptionCreateDto.Description, productDescriptionCreateDto.ProductVendorId))
+        return Conflict("Description is already taken.");
+
         var isAdded = await _prodDescService.AddAsync(productDescriptionCreateDto);
         return isAdded ?
             NoContent() :
@@ -57,7 +60,11 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     [HttpPut("{Description_Id:int}")]
     public async Task<ActionResult> UpdateProductDescription(int Description_Id, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto)
     {
+    
         var isUpdated = await _prodDescService.UpdateDetailsAsync(Description_Id, descriptionGetAndUpdateDto);
+
+        if (await _prodDescService.IsDescriptionExists(Description_Id, descriptionGetAndUpdateDto.Description, descriptionGetAndUpdateDto.ProductVendorId))
+        return Conflict("Description is already taken.");
 
         return isUpdated ?
             NoContent() :

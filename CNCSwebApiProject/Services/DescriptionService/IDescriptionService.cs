@@ -6,9 +6,10 @@ namespace CNCSwebApiProject.Services.DescriptionService;
 public interface IDescriptionService
 {
     Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllAsync();
-    Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllByProductIdAsync(int Product_Id);
+    Task<IEnumerable<DescriptionGetAndUpdateDto>> GetAllByProductIdAsync(int productId);
     Task<DescriptionGetAndUpdateDto?> GetAsync(int id);
-    Task<bool> AddAsync(ProductDescriptionCreateDto productDescriptionCreateDto); 
-    Task<bool> UpdateDetailsAsync(int productDescription_Id, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto); 
-    Task<bool> DeleteAsync(int productDescription_Id);
+    Task<bool> IsDescriptionExists(int descriptionId, string name, int productId);
+    Task<bool> AddAsync(ProductDescriptionCreateDto descriptionCreateDto); 
+    Task<bool> UpdateDetailsAsync(int descriptionId, DescriptionGetAndUpdateDto descriptionGetAndUpdateDto); 
+    Task<bool> DeleteAsync(int descriptionId);
 }

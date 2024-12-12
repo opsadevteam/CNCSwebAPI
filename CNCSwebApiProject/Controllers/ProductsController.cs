@@ -39,10 +39,9 @@ namespace CNCSwebApiProject.Controllers
         {
             var obj = await _descriptionService.GetAllByProductIdAsync(Product_Id);
 
-            return obj.Any() ?
-                Ok(obj) :
-                NotFound("No data found.");
+            return Ok(obj ?? Enumerable.Empty<DescriptionGetAndUpdateDto>());
         }
+
 
         // [HttpGet("with-descriptions")]
         // public async Task<ActionResult<IEnumerable<ProductWithDescriptionDto>>> GetAllProdWithDescAsync()
@@ -90,6 +89,15 @@ namespace CNCSwebApiProject.Controllers
             return isUpdated ?
                 NoContent() :
                 NotFound($"User with ID {Product_Id} not found.");
+        }
+
+        [HttpDelete("{Product_Id}")]
+        public async Task<IActionResult> DeleteProduct(int Product_Id)
+        {
+            var isDeleted = await _productService.DeleteAsync(Product_Id);
+            return isDeleted
+                ? NoContent()
+                : NotFound($"User with ID {Product_Id} not found.");
         }
     }
 }

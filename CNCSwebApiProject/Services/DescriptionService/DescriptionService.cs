@@ -36,6 +36,11 @@ public class DescriptionService(IDescriptionRepository _productDescRepo, IMapper
         return mapper.Map<DescriptionGetAndUpdateDto?>(obj);
     }
 
+    public async Task<bool> IsDescriptionExists(int descriptionId, string name, int productId)
+    {
+        return await _productDescRepo.IsDescriptionExists(descriptionId, name, productId);
+    }
+
     public async Task<bool> UpdateDetailsAsync(int productDescription_Id, DescriptionGetAndUpdateDto DescriptionGetAndUpdateDto)
     {
         var obj = await _productDescRepo.GetAsync(productDescription_Id);
