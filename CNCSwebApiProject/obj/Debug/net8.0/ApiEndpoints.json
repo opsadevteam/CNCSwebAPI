@@ -8,14 +8,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "CNCSwebApiProject.Models.LoginRequestModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

@@ -8,5 +8,7 @@
         public int ExpiresIn { get; set; }
         public string? UserGroup { get; set; }
 
+        public string? FullName { get; set; }
+
     }
 }

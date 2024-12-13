@@ -10,22 +10,25 @@
         "tags": [
           "Account"
         ],
-        "parameters": [
-          {
-            "name": "Username",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Password",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestModel"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -1938,6 +1941,20 @@
         "type": "object",
         "additionalProperties": false
       },
+      "LoginRequestModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginResponseModel": {
         "type": "object",
         "properties": {
@@ -1954,6 +1971,10 @@
             "format": "int32"
           },
           "userGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
             "type": "string",
             "nullable": true
           }

@@ -62,7 +62,9 @@ namespace CNCSwebApiProject.Services.JwtService
                 AccessToken = accessToken,
                 Username = request.Username,
                 ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.UtcNow).TotalSeconds,
-                UserGroup = userAccount.UserGroup
+                UserGroup = userAccount.UserGroup,
+                FullName = userAccount.FullName
+
                 
 
             };
