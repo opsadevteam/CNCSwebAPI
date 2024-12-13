@@ -21,15 +21,15 @@ namespace CNCSwebApiProject.Controllers
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<ActionResult<LoginResponseModel>>Login(LoginRequestModel request)
+        public async Task<ActionResult<LoginResponseModel>> Login([FromBody] LoginRequestModel request)
         {
             var result = await _jwtService.Authenticate(request);
             if (result is null)
-             return Unauthorized();
+                return Unauthorized();
 
             return result;
 
-            
+
         }
     }
 }
