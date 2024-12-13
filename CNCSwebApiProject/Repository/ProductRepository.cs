@@ -41,7 +41,7 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(pv => pv.IsDeleted == false)
         .OrderByDescending(pv => pv.Id)
-        .Include(pv => pv.ProductDescription)
+        .Include(pv => pv.ProductDescription.Where(pd => pd.IsDeleted == false))
         .ToListAsync();
     }
 
