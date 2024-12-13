@@ -1,6 +1,7 @@
 using CNCSwebApiProject.Dto;
 using CNCSwebApiProject.Dto.DescriptionDtos;
 using CNCSwebApiProject.Services.DescriptionService;
+using CNCSwebApiProject.Services.ProductService;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace CNCSwebApiProject.Controllers;
 [EnableCors("AllowOrigin")]
 [Route("api/v1/[controller]")]
 [ApiController]
-public class DescriptionsController(IDescriptionService _prodDescService) : ControllerBase
+public class DescriptionsController(IDescriptionService _prodDescService, IProductService _productService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DescriptionDto>>> GetDescriptionsAsync()
@@ -58,13 +59,16 @@ public class DescriptionsController(IDescriptionService _prodDescService) : Cont
     }
 
     [HttpPut("{Description_Id:int}")]
-    public async Task<ActionResult> UpdateDescription(int Description_Id, DescriptionDto descriptionDto, int Product_Id)
+    public async Task<ActionResult> UpdateDescription(int Description_Id,  [FromBody] DescriptionDto descriptionDto, [FromQuery] int Product_Id)
     {
-    
-        var isUpdated = await _prodDescService.UpdateDescriptionAsync(Description_Id, descriptionDto);
+        var product = await _productService.GetProductAsync(Product_Id);
+
+        if (product == null) return NotFound("Product not found");
 
         if (await _prodDescService.IsDescriptionExists(Description_Id, descriptionDto.Description, Product_Id))
         return Conflict("Description is already taken.");
+        
+        var isUpdated = await _prodDescService.UpdateDescriptionAsync(Description_Id, descriptionDto);
 
         return isUpdated ?
             NoContent() :

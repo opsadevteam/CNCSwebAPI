@@ -80,7 +80,6 @@ namespace CNCSwebApiProject.Controllers
 
         [HttpPut("{Product_Id}")]
         public async Task<IActionResult> UpdateDetailsAsync(int Product_Id, ProductUpdate Product_Name) 
-        // Explicitly use [FromBody] to ensure the Product_Name is sent in the request body rather than as a query parameter
         {
             if (await _productService.IsProductNameExists(Product_Name.Name!, Product_Id!))
                 return Conflict("Username is already taken.");
