@@ -58,7 +58,7 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await _context.ProductVendor
         .Where(a => a.Id == productId)
         .Where(a => a.IsDeleted == false)
-        .Include(pv => pv.ProductDescription)
+        .Include(pv => pv.ProductDescription.Where(pd => pd.IsDeleted == false))
         .SingleOrDefaultAsync();
     }
 
