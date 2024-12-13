@@ -14,6 +14,7 @@ using CNCSwebApiProject.Services.UserAccountService;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using CNCSwebApiProject.Services.ProductService;
+using CNCSwebApiProject.Services.ProductLogService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,6 +59,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddScoped<IDescriptionRepository, DescriptionRepository>();
 builder.Services.AddScoped<IDescriptionService, DescriptionService>();
+
+builder.Services.AddScoped<IProductLogRepository, ProductLogRepository>();
+builder.Services.AddScoped<IProductLogService, ProductLogService>();
 
 
 var app = builder.Build();

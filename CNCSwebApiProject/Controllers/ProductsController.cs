@@ -63,6 +63,16 @@ namespace CNCSwebApiProject.Controllers
                 NotFound($"User with ID {Product_Id} not found.");
         }
 
+        [HttpGet("{Product_Id}/Logs")]
+        public async Task<ActionResult<ProductWithLogsDto>> GetProductWithLogsAsync(int Product_Id)
+        {
+            var obj = await _productService.GetProductWithLogsAsync(Product_Id);
+
+            return obj is not null ?
+                Ok(obj) :
+                NotFound($"User with ID {Product_Id} not found.");
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddProductVendor(ProductCreateDto productVendorCreateDto)
         {
@@ -79,7 +89,7 @@ namespace CNCSwebApiProject.Controllers
         }
 
         [HttpPut("{Product_Id}")]
-        public async Task<IActionResult> UpdateDetailsAsync(int Product_Id, ProductUpdate Product_Name) 
+        public async Task<IActionResult> UpdateDetailsAsync(int Product_Id, ProductUpdate Product_Name)
         {
             if (await _productService.IsProductNameExists(Product_Name.Name!, Product_Id!))
                 return Conflict("Username is already taken.");

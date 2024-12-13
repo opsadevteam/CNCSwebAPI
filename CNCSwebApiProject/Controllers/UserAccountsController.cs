@@ -62,7 +62,7 @@ public class UserAccountsController(IUserAccountService _UserAccountService) : C
             NotFound($"User with ID {UserAccount_Id} not found.");
     }
 
-    [HttpPut("{UserAccount_Id}/ChangePassword")]
+    [HttpPut("{UserAccount_Id}/Password")]
     public async Task<IActionResult> UpdateUserAccountPasswordAsync(int UserAccount_Id, UserAccountChangePasswordDto userAccount)
     {
         var isUpdated = await _UserAccountService.UpdatePasswordAsync(UserAccount_Id, userAccount);
