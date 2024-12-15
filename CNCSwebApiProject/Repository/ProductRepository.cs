@@ -83,6 +83,7 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
     public async Task<IEnumerable<ProductVendor>> GetProductWithLogsAsync(int productId)
     {
         return await _context.ProductVendor
+            .Where(x => x.Id == productId)
             .Include(pv => pv.ProductVendorLog.Where(pd => pd.ProductVendorId == productId))
             .ToListAsync();
     }

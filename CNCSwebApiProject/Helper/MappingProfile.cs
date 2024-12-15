@@ -19,8 +19,8 @@ namespace CNCSwebApiProject.Helper
             CreateMap<TblTransactions, TransactionDetaildDto>();
             CreateMap<TransactionDetaildDto, TblTransactions>();
 
-            CreateMap<TblProductVendor, ProductVendorDto>();
-            CreateMap<ProductVendorDto, TblProductVendor>();
+            // CreateMap<TblProductVendor, ProductVendorDto>();
+            // CreateMap<ProductVendorDto, TblProductVendor>();
 
             CreateMap<TblUserAccount, UserAccountListDto>();
             CreateMap<TblUserAccount, UserAccountGetAndUpdateDto>().ReverseMap();
@@ -38,10 +38,11 @@ namespace CNCSwebApiProject.Helper
             .ReverseMap();
             CreateMap<ProductCreateDto, ProductVendor>();
 
+            CreateMap<ProductVendorLog, ProductLogDto>().ReverseMap();
             CreateMap<ProductDescription, DescriptionDto>();
             CreateMap<ProductDescriptionCreateDto, ProductDescription>();
 
-            CreateMap<ProductLogDto, ProductVendorLog>().ReverseMap();
+            
 
             // Mapping for TblTransactions to TransactionDto
             CreateMap<TblTransactions, EmailRecordsDto>()

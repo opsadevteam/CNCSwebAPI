@@ -17,6 +17,5 @@ public class ProductLogDto
 
     public DateTime? DateAdded { get; set; }
 
-    [Required]
     public int ProductVendorId { get; set; }
 }
