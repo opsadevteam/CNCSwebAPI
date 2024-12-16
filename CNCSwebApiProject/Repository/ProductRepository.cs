@@ -80,11 +80,13 @@ public class ProductRepository(CncssystemContext _context) : IProductRepository
         return await SaveProductAsync();
     }
 
-    public async Task<IEnumerable<ProductVendor>> GetProductWithLogsAsync(int productId)
+    public async Task<ProductVendor?> GetProductWithLogsAsync(int productId)
     {
         return await _context.ProductVendor
             .Where(x => x.Id == productId)
-            .Include(pv => pv.ProductVendorLog.Where(pd => pd.ProductVendorId == productId))
-            .ToListAsync();
+            .Include(pv => pv.ProductVendorLog
+                    .Where(pd => pd.ProductVendorId == productId)
+                    .OrderByDescending(pd => pd.DateAdded))
+            .SingleOrDefaultAsync();
     }
 }

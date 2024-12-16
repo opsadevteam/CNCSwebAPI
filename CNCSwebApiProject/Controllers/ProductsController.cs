@@ -64,7 +64,7 @@ namespace CNCSwebApiProject.Controllers
         }
 
         [HttpGet("{Product_Id}/Logs")]
-        public async Task<ActionResult<IEnumerable<ProductWithLogsDto>>> GetProductWithLogsAsync(int Product_Id)
+        public async Task<ActionResult<ProductWithLogsDto>> GetProductWithLogsAsync(int Product_Id)
         {
             var obj = await _productService.GetProductWithLogsAsync(Product_Id);
 

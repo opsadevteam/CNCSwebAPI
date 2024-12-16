@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CNCSwebApiProject.Controllers
 {
     [EnableCors("AllowOrigin")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ProductLogsController(IProductLogService _productLogService) : ControllerBase
     {

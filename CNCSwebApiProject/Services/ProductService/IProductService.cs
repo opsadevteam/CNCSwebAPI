@@ -9,7 +9,7 @@ public interface IProductService
     Task<ProductDto?> GetProductAsync(int productId); 
     Task<IEnumerable<ProductDescriptionsDto>> GetProductsDescriptionsAsync(); 
     Task<ProductDescriptionsDto?> GetProductDescriptionsAsync(int productId); 
-    Task<IEnumerable<ProductWithLogsDto>> GetProductWithLogsAsync(int productId); 
+    Task<ProductWithLogsDto?> GetProductWithLogsAsync(int productId); 
     Task<bool> AddAProductsync(ProductCreateDto productVendorCreateDto); 
     Task<bool> UpdateProductAsync(int productId, string productName); 
     Task<bool> DeleteProductAsync(int productId);

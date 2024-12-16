@@ -72,4 +72,12 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
         _context.Entry(productDescription).State = EntityState.Modified;
         return await SaveDescriptionAsync();
     }
+
+    public async Task<ProductDescription?> GetDescriptionWithLogs(int descriptionId)
+    {
+        return await _context.ProductDescription
+        .Where(x => x.Id == descriptionId)
+        .Include(pd => pd.ProductDescriptionLog.Where(pv => pv.ProductDescriptionId == descriptionId))
+        .SingleOrDefaultAsync();
+    }
 }

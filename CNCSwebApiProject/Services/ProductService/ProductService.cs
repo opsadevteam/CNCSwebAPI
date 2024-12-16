@@ -58,9 +58,9 @@ public class ProductService(IProductRepository _productRepository, IMapper mappe
         return await _productRepository.UpdateProductAsync(obj);   
     }
 
-    public async Task<IEnumerable<ProductWithLogsDto>> GetProductWithLogsAsync(int productId)
+    public async Task<ProductWithLogsDto?> GetProductWithLogsAsync(int productId)
     {
         var obj = await _productRepository.GetProductWithLogsAsync(productId);
-        return mapper.Map<IEnumerable<ProductWithLogsDto>>(obj);
+        return mapper.Map<ProductWithLogsDto>(obj);
     }
 }

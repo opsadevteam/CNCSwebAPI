@@ -30,6 +30,12 @@ public class DescriptionService(IDescriptionRepository _productDescRepo, IMapper
         return mapper.Map<IEnumerable<DescriptionDto>>(obj);
     }
 
+    public async Task<DescriptionWithLogsDto?> GetDescriptionWithLogsAsync(int descriptionId)
+    {
+        var obj = await _productDescRepo.GetDescriptionWithLogs(descriptionId);
+        return mapper.Map<DescriptionWithLogsDto>(obj);
+    }
+
     public async Task<bool> IsDescriptionExists(int descriptionId, string description, int productId)
     {
         return await _productDescRepo.IsDescriptionExists(descriptionId, description, productId);

@@ -22,7 +22,7 @@ public class DescriptionsController(IDescriptionService _prodDescService, IProdu
             Ok(obj) :
             NotFound("No data found.");
     }
-    
+
     // [HttpGet("by-product/{productId:int}")]
     // public async Task<ActionResult<IEnumerable<DescriptionDto>>> GetDescriptionsByProductIdAsync(int productId)
     // {
@@ -43,6 +43,16 @@ public class DescriptionsController(IDescriptionService _prodDescService, IProdu
             NotFound($"Data with ID {Description_Id} not found.");
     }
 
+    [HttpGet("{Description_Id}/Logs")]
+    public async Task<ActionResult<DescriptionWithLogsDto>> GetDescriptionWithLogs(int Description_Id)
+    {
+        var obj = await _prodDescService.GetDescriptionWithLogsAsync(Description_Id);
+
+        return obj is not null ?
+            Ok(obj) :
+            NotFound($"User with ID {Description_Id} not found.");
+    }
+
     [HttpPost]
     public async Task<IActionResult> AddDescription(ProductDescriptionCreateDto productDescriptionCreateDto)
     {
@@ -50,7 +60,7 @@ public class DescriptionsController(IDescriptionService _prodDescService, IProdu
             return BadRequest("Invalid data.");
 
         if (await _prodDescService.IsDescriptionExists(0, productDescriptionCreateDto.Description, productDescriptionCreateDto.ProductVendorId))
-        return Conflict("Description is already taken.");
+            return Conflict("Description is already taken.");
 
         var isAdded = await _prodDescService.AddDescriptionAsync(productDescriptionCreateDto);
         return isAdded ?
@@ -59,15 +69,15 @@ public class DescriptionsController(IDescriptionService _prodDescService, IProdu
     }
 
     [HttpPut("{Description_Id:int}")]
-    public async Task<ActionResult> UpdateDescription(int Description_Id,  [FromBody] DescriptionDto descriptionDto, [FromQuery] int Product_Id)
+    public async Task<ActionResult> UpdateDescription(int Description_Id, [FromBody] DescriptionDto descriptionDto, [FromQuery] int Product_Id)
     {
         var product = await _productService.GetProductAsync(Product_Id);
 
         if (product == null) return NotFound("Product not found");
 
         if (await _prodDescService.IsDescriptionExists(Description_Id, descriptionDto.Description, Product_Id))
-        return Conflict("Description is already taken.");
-        
+            return Conflict("Description is already taken.");
+
         var isUpdated = await _prodDescService.UpdateDescriptionAsync(Description_Id, descriptionDto);
 
         return isUpdated ?

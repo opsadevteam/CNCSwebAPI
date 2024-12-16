@@ -7,6 +7,7 @@ public interface IDescriptionRepository
 {
         Task<IEnumerable<ProductDescription>> GetDescriptionsAsync(); 
         // Task<IEnumerable<ProductDescription?>> GetAllByProductIdAsync(int productId); 
+        Task<ProductDescription?> GetDescriptionWithLogs(int descriptionId);
         Task<ProductDescription?> GetDescriptionAsync(int descriptionId); 
         Task<bool> IsDescriptionExists(int descriptionId, string description, int productId); 
         Task<bool> AddDescriptionAsync(ProductDescription productDescription);
