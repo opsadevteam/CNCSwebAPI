@@ -10,7 +10,7 @@ public interface IProductRepository
         Task<IEnumerable<ProductVendor>> GetProductsDescriptionsAsync();
         Task<ProductVendor?> GetProductDescriptionsAsync(int productId);
         Task<ProductVendor?> GetProductWithLogsAsync(int productId);
-        Task<bool> AddProductAsync(ProductVendor product);
+        Task<int> AddProductAsync(ProductVendor product);
         Task<bool> UpdateProductAsync(ProductVendor product);
         Task<bool> DeleteProductAsync(int productId);
         Task<bool> IsProductNameExists(string productName, int productId);

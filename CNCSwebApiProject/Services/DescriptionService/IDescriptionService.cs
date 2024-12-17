@@ -10,7 +10,7 @@ public interface IDescriptionService
     Task<DescriptionDto?> GetDescriptionAsync(int descriptionId);
     Task<DescriptionWithLogsDto?> GetDescriptionWithLogsAsync(int descriptionId);
     Task<bool> IsDescriptionExists(int descriptionId, string description, int productId);
-    Task<bool> AddDescriptionAsync(ProductDescriptionCreateDto descriptionCreateDto); 
+    Task<int> AddDescriptionAsync(ProductDescriptionCreateDto descriptionCreateDto); 
     Task<bool> UpdateDescriptionAsync(int descriptionId, DescriptionDto descriptionDto); 
     Task<bool> DeleteDescriptionAsync(int descriptionId);
 }

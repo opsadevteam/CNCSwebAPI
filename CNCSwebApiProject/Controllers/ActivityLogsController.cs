@@ -12,7 +12,7 @@ namespace CNCSapi.Controllers
     [EnableCors("AllowOrigin")]
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ActivityLogController(IActivityLogService _activityLogService) : ControllerBase
+    public class ActivityLogsController(IActivityLogService _activityLogService) : ControllerBase
     {
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ActivityLogGetDto>>> GetActivityLogs()

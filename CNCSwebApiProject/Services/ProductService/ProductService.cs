@@ -9,7 +9,7 @@ namespace CNCSwebApiProject.Services.ProductService;
 
 public class ProductService(IProductRepository _productRepository, IMapper mapper) : IProductService
 {
-    public async Task<bool> AddAProductsync(ProductCreateDto productVendorCreateDto)
+    public async Task<int> AddAProductsync(ProductCreateDto productVendorCreateDto)
     {
         return await _productRepository.AddProductAsync(mapper.Map<ProductVendor>(productVendorCreateDto));
     }

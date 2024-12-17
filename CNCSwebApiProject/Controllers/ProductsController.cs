@@ -82,10 +82,12 @@ namespace CNCSwebApiProject.Controllers
             if (await _productService.IsProductNameExists(productVendorCreateDto.Name!, 0))
                 return Conflict("Product name is already taken.");
 
-            var isAdded = await _productService.AddAProductsync(productVendorCreateDto);
-            return isAdded ?
-                NoContent() :
-                StatusCode(StatusCodes.Status500InternalServerError, "Error adding product.");
+            var productId = await _productService.AddAProductsync(productVendorCreateDto);
+
+            if (productId > 0)
+                return Ok(new { Id = productId });
+                
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error adding product.");
         }
 
         [HttpPut("{Product_Id}")]

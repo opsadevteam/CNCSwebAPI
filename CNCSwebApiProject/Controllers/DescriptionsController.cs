@@ -62,10 +62,12 @@ public class DescriptionsController(IDescriptionService _prodDescService, IProdu
         if (await _prodDescService.IsDescriptionExists(0, productDescriptionCreateDto.Description, productDescriptionCreateDto.ProductVendorId))
             return Conflict("Description is already taken.");
 
-        var isAdded = await _prodDescService.AddDescriptionAsync(productDescriptionCreateDto);
-        return isAdded ?
-            NoContent() :
-            StatusCode(StatusCodes.Status500InternalServerError, "Error adding description.");
+        var descriptionId = await _prodDescService.AddDescriptionAsync(productDescriptionCreateDto);
+
+        if(descriptionId > 0)
+                return Ok(new { Id = descriptionId });
+        
+        return StatusCode(StatusCodes.Status500InternalServerError, "Error adding description.");
     }
 
     [HttpPut("{Description_Id:int}")]

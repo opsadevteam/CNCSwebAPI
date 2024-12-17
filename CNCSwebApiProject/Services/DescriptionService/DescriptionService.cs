@@ -8,7 +8,7 @@ namespace CNCSwebApiProject.Services.DescriptionService;
 
 public class DescriptionService(IDescriptionRepository _productDescRepo, IMapper mapper) : IDescriptionService
 {
-    public async Task<bool> AddDescriptionAsync(ProductDescriptionCreateDto productDescriptionCreateDto)
+    public async Task<int> AddDescriptionAsync(ProductDescriptionCreateDto productDescriptionCreateDto)
     {
         return await _productDescRepo.AddDescriptionAsync(mapper.Map<ProductDescription>(productDescriptionCreateDto));
     }

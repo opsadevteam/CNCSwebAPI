@@ -10,7 +10,7 @@ public interface IProductService
     Task<IEnumerable<ProductDescriptionsDto>> GetProductsDescriptionsAsync(); 
     Task<ProductDescriptionsDto?> GetProductDescriptionsAsync(int productId); 
     Task<ProductWithLogsDto?> GetProductWithLogsAsync(int productId); 
-    Task<bool> AddAProductsync(ProductCreateDto productVendorCreateDto); 
+    Task<int> AddAProductsync(ProductCreateDto productVendorCreateDto); 
     Task<bool> UpdateProductAsync(int productId, string productName); 
     Task<bool> DeleteProductAsync(int productId);
     Task<bool> IsProductNameExists(string productName, int productId);

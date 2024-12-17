@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.PortableExecutable;
 using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +8,18 @@ namespace CNCSwebApiProject.Repository;
 
 public class DescriptionRepository(CncssystemContext _context) : IDescriptionRepository
 {
-   public async Task<bool> AddDescriptionAsync(ProductDescription productDescription)
+   public async Task<int> AddDescriptionAsync(ProductDescription productDescription)
     {
         await _context.ProductDescription.AddAsync(productDescription);
-        return await SaveDescriptionAsync();
+        var result = await SaveDescriptionAsync();
+        
+        if (result) {
+            var recentObj = await _context.ProductDescription.OrderByDescending(p => p.Id)
+                                                            .FirstOrDefaultAsync();
+            return recentObj?.Id ?? 0;
+        }
+
+        return 0;
     }
 
    public async Task<bool> DeleteDescriptionAsync(int descriptionId)
@@ -77,7 +86,8 @@ public class DescriptionRepository(CncssystemContext _context) : IDescriptionRep
     {
         return await _context.ProductDescription
         .Where(x => x.Id == descriptionId)
-        .Include(pd => pd.ProductDescriptionLog.Where(pv => pv.ProductDescriptionId == descriptionId))
+        .Include(pd => pd.ProductDescriptionLog.Where(pv => pv.ProductDescriptionId == descriptionId)
+                                               .OrderByDescending(pv => pv.DateAdded))
         .SingleOrDefaultAsync();
     }
 }

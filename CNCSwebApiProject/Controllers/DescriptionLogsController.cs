@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace CNCSwebApiProject.Controllers
 {
     [EnableCors("AllowOrigin")]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
-    public class DescriptionsLogController(IDescriptionLogService _descriptionLogService) : ControllerBase
+    public class DescriptionLogsController(IDescriptionLogService _descriptionLogService) : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> AddDescriptionLog(DescriptionLogDto descriptionLogDto)

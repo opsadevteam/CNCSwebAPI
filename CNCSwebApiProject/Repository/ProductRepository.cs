@@ -7,10 +7,17 @@ namespace CNCSwebApiProject.Repository;
 
 public class ProductRepository(CncssystemContext _context) : IProductRepository
 {
-    public async Task<bool> AddProductAsync(ProductVendor product)
+    public async Task<int> AddProductAsync(ProductVendor product)
     {
         await _context.ProductVendor.AddAsync(product);
-        return await SaveProductAsync();
+        var result = await SaveProductAsync();
+        if (result) {
+            var recentObj = await _context.ProductVendor.OrderByDescending(p => p.Id)
+                                                        .FirstOrDefaultAsync();
+            return recentObj?.Id ?? 0;
+        }
+
+        return 0;
     }
 
     public async Task<bool> DeleteProductAsync(int productId)
