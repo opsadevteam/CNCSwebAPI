@@ -59,6 +59,7 @@ namespace CNCSwebApiProject.Services.JwtService
 
             return new LoginResponseModel
             {
+                Id = userAccount.Id,
                 AccessToken = accessToken,
                 Username = request.Username,
                 ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.UtcNow).TotalSeconds,
