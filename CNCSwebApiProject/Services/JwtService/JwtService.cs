@@ -14,7 +14,7 @@ namespace CNCSwebApiProject.Services.JwtService
         private readonly CncssystemContext _context;
         private readonly IConfiguration _configuration;
 
-        public JwtService(CncssystemContext context,IConfiguration configuration)
+        public JwtService(CncssystemContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -22,11 +22,11 @@ namespace CNCSwebApiProject.Services.JwtService
 
         public async Task<LoginResponseModel?> Authenticate(LoginRequestModel request)
         {
-            if(string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password)) 
+            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
                 return null;
 
             var userAccount = await _context.TblUserAccount.FirstOrDefaultAsync(x => x.Username == request.Username);
-            if(userAccount is null)
+            if (userAccount is null)
                 return null;
             if (userAccount.Password != request.Password)
                 return null;
@@ -64,10 +64,8 @@ namespace CNCSwebApiProject.Services.JwtService
                 Username = request.Username,
                 ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.UtcNow).TotalSeconds,
                 UserGroup = userAccount.UserGroup,
+                Status = userAccount.Status,
                 FullName = userAccount.FullName
-
-                
-
             };
 
         }
