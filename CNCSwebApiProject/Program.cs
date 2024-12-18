@@ -18,6 +18,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using CNCSwebApiProject.Services.JwtService;
 using Microsoft.OpenApi.Models;
+using CNCSwebApiProject.Services.ProductService;
+using CNCSwebApiProject.Services.ProductLogService;
+using CNCSwebApiProject.Services.DescriptionLogService;
 
 var builder = WebApplication.CreateBuilder(args);
 

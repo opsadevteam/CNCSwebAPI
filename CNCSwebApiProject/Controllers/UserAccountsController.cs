@@ -5,9 +5,11 @@ using CNCSwebApiProject.Dto.UserAccountsDtos;
 using CNCSwebApiProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using CNCSwebApiProject.Services.UserAccountService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CNCSwebApiProject.Controllers;
 
+[Authorize]
 [EnableCors("AllowOrigin")]
 [Route("api/v1/[controller]")]
 [ApiController]

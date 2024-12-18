@@ -4,9 +4,11 @@ using CNCSwebApiProject.Interface;
 using CNCSwebApiProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CNCSwebApiProject.Controllers
 {
+    [Authorize]
     [EnableCors("AllowOrigin")]
     [Route("api/v1/[controller]")]
     [ApiController]

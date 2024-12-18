@@ -3,12 +3,14 @@ using CNCSwebApiProject.Dto.DescriptionDtos;
 using CNCSwebApiProject.Dto.ProductDtos;
 using CNCSwebApiProject.Services.DescriptionService;
 using CNCSwebApiProject.Services.ProductService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CNCSwebApiProject.Controllers
 {
+    [Authorize]
     [EnableCors("AllowOrigin")]
     [Route("api/v1/[controller]")]
     [ApiController]

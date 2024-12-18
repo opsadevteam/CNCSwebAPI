@@ -1,10 +1,12 @@
 ﻿using CNCSwebApiProject.Services.WorkloadStatistics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using static CNCSwebApiProject.Dto.ChartsDto;
 
 namespace CNCSwebApiProject.Controllers
 {
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class WorkloadStatisticsController : ControllerBase
