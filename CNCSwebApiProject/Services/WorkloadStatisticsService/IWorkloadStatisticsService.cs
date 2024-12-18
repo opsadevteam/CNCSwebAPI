@@ -1,16 +1,15 @@
 ﻿using CNCSwebApiProject.Dto;
 using static CNCSwebApiProject.Dto.ChartsDto;
 
-namespace CNCSwebApiProject.Services.WorkloadStatistics
+public interface IWorkloadStatisticsService
 {
-    public interface IWorkloadStatisticsService
-    {
-        Task<IEnumerable<TransactionDto>> GetWorkloadStatistics();
-        Task<ProductSummaryChartDto> GetProductSummaryChartData();
-        Task<ProductSummaryChartTotalDto> GetProductSummaryChartTotal();
-        Task<TransactionPerDayDto> GetTransactionPerDay();
-        Task<UserCountSummaryChartDto> GetUserCountChartData();
-        Task<UserCountSummaryChartDto> GetUserCountChartTotal();
-        Task<DescriptionTableDto> GetDescriptionTable();
-    }
+
+    Task<IEnumerable<TransactionDto>> GetWorkloadStatistics();
+    Task<ProductSummaryChartDto> GetProductSummaryChartData(DateTime startDate, DateTime endDate);
+    Task<ProductSummaryChartTotalDto> GetProductSummaryChartTotal(DateTime startDate, DateTime endDate);
+    Task<TransactionPerDayDto> GetTransactionPerDay(DateTime startDate, DateTime endDate);
+    Task<UserCountSummaryChartDto> GetUserCountChartData(DateTime startDate, DateTime endDate);
+    Task<UserCountSummaryChartDto> GetUserCountChartTotal();
+    Task<DescriptionTableDto> GetDescriptionTable(DateTime startDate, DateTime endDate);
+
 }

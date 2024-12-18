@@ -37,7 +37,7 @@ namespace CNCSwebApiProject.Repository
             return saved > 0;
         }
 
-        public async Task<bool> SoftDeleteAsync(int id, bool? isDeleted)
+        public async Task<bool> SoftDeleteAsync(int id, bool isDeleted)
         {
             var existingTransaction = await _context.TblTransactions.FindAsync(id);
             if (existingTransaction == null)

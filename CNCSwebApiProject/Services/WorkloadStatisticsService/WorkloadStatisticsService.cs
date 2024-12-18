@@ -16,21 +16,24 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
             _dbContext = dbContext;
         }
 
-        public async Task<DescriptionTableDto> GetDescriptionTable()
+        public async Task<DescriptionTableDto> GetDescriptionTable(DateTime startDate, DateTime endDate)
         {
             var data = await _dbContext.TblTransactions
-                .Where(t => t.IsDeleted == false) // Exclude deleted transactions
-               .Include(p => p.ProductVendor)
-                .Include(t => t.Description)
-               .GroupBy(t => t.ProductVendor.ProductVendor) // Group by product vendor
-               .Select(g => new
-               {
-                   Product = g.Key,
-                   CallTotal = g.Count(t => t.TransactionType == "Phone"),
-                   EmailTotal = g.Count(t => t.TransactionType == "Email"),
-                   QQCount = g.Count(t => t.TransactionType == "QQ")
-               })
-               .ToListAsync();
+                .Where(t => !t.IsDeleted &&
+                    t.TakeOffDate.HasValue &&
+                    t.TakeOffDate.Value.Date >= startDate.Date &&
+                    t.TakeOffDate.Value.Date <= endDate.Date)
+                .Include(t => t.ProductVendor)
+                .GroupBy(t => new { t.ProductVendor.ProductVendor, t.TakeOffDate })
+                .Select(g => new
+                {
+                    Product = g.Key.ProductVendor,
+                    CallTotal = g.Count(t => t.TransactionType == "Phone"),
+                    EmailTotal = g.Count(t => t.TransactionType == "Email"),
+                    QQCount = g.Count(t => t.TransactionType == "QQ"),
+                    TakeOffDate = g.Key.TakeOffDate
+                })
+                .ToListAsync();
 
             return new DescriptionTableDto
             {
@@ -40,17 +43,26 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                     CallCount = d.CallTotal,
                     EMailCount = d.EmailTotal,
                     QQCount = d.QQCount,
-                    Total = d.CallTotal + d.EmailTotal + d.QQCount
+                    Total = d.CallTotal + d.EmailTotal + d.QQCount,
+                    TakeOffDate = d.TakeOffDate.HasValue ? DateOnly.FromDateTime(d.TakeOffDate.Value) : null
                 }).ToList()
             };
         }
 
-        public async Task<ProductSummaryChartDto> GetProductSummaryChartData()
+        public async Task<ProductSummaryChartDto> GetProductSummaryChartData(DateTime startDate, DateTime endDate)
         {
             var data = await _dbContext.TblTransactions
-                .Where(t => t.IsDeleted == false) // Exclude deleted transactions
-                .GroupBy(t => t.ProductVendor.ProductVendor) // Group by ProductVendor name
-                .Select(g => new { Label = g.Key, Y = g.Count() }) // Counting the number of transactions per vendor
+                .Where(t => !t.IsDeleted &&
+                    t.TakeOffDate.HasValue &&
+                    t.TakeOffDate.Value.Date >= startDate.Date &&
+                    t.TakeOffDate.Value.Date <= endDate.Date)
+                .GroupBy(t => new { t.ProductVendor.ProductVendor, TakeOffDate = t.TakeOffDate.Value.Date })
+                .Select(g => new
+                {
+                    Label = g.Key.ProductVendor,
+                    Y = g.Count(),
+                    TakeOffDate = g.Key.TakeOffDate
+                })
                 .ToListAsync();
 
             return new ProductSummaryChartDto
@@ -58,24 +70,28 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                 DataPoints = data.Select(d => new ChartDataPoint
                 {
                     Label = d.Label,
-                    Y = d.Y
+                    Y = d.Y,
+                    TakeOffDate = DateOnly.FromDateTime(d.TakeOffDate)
                 }).ToList()
             };
         }
 
-        public async Task<ProductSummaryChartTotalDto> GetProductSummaryChartTotal()
+        public async Task<ProductSummaryChartTotalDto> GetProductSummaryChartTotal(DateTime startDate, DateTime endDate)
         {
             var data = await _dbContext.TblTransactions
-                 .Where(t => t.IsDeleted == false) // Exclude deleted transactions
-                 .Include(p => p.ProductVendor)
-                 .Include(t => t.Description)
-                .GroupBy(t => t.ProductVendor.ProductVendor) // Group by product vendor
+                .Where(t => !t.IsDeleted &&
+                    t.TakeOffDate.HasValue &&
+                    t.TakeOffDate.Value.Date >= startDate.Date &&
+                    t.TakeOffDate.Value.Date <= endDate.Date)
+                .Include(p => p.ProductVendor)
+                .GroupBy(t => new { t.ProductVendor.ProductVendor, t.TakeOffDate })
                 .Select(g => new
                 {
-                    Product = g.Key,
+                    Product = g.Key.ProductVendor,
                     CallTotal = g.Count(t => t.TransactionType == "Phone"),
                     EmailTotal = g.Count(t => t.TransactionType == "Email"),
-                    QQCount = g.Count(t => t.TransactionType == "QQ")
+                    QQCount = g.Count(t => t.TransactionType == "QQ"),
+                    TakeOffDate = g.Key.TakeOffDate
                 })
                 .ToListAsync();
 
@@ -87,22 +103,28 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                     CallTotal = d.CallTotal,
                     EmailTotal = d.EmailTotal,
                     QQCount = d.QQCount,
-                    Total = d.CallTotal + d.EmailTotal + d.QQCount
+                    Total = d.CallTotal + d.EmailTotal + d.QQCount,
+                    TakeOffDate = d.TakeOffDate.HasValue ? DateOnly.FromDateTime(d.TakeOffDate.Value) : null
                 }).ToList()
             };
         }
-        public async Task<TransactionPerDayDto> GetTransactionPerDay()
+
+        public async Task<TransactionPerDayDto> GetTransactionPerDay(DateTime startDate, DateTime endDate)
         {
             var data = await _dbContext.TblTransactions
-                .Where(t => t.IsDeleted == false) // Exclude deleted transactions
-                .GroupBy(t => t.DateAdded.Value.Day) // Extract day value
+                .Where(t => !t.IsDeleted &&
+                    t.TakeOffDate.HasValue &&
+                    t.TakeOffDate.Value.Date >= startDate.Date &&
+                    t.TakeOffDate.Value.Date <= endDate.Date)
+                .GroupBy(t => new { t.ProductVendor.ProductVendor, t.TakeOffDate })
                 .Select(g => new
                 {
-                    Day = g.Key,
+                    Day = g.Key.TakeOffDate.Value.Day,
                     CallTotal = g.Count(t => t.TransactionType == "Phone"),
                     EmailTotal = g.Count(t => t.TransactionType == "Email"),
                     QQCount = g.Count(t => t.TransactionType == "QQ"),
-                    Total = g.Count()
+                    Total = g.Count(),
+                    TakeOffDate = g.Key.TakeOffDate
                 })
                 .ToListAsync();
 
@@ -114,24 +136,28 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                     CallTotal = d.CallTotal,
                     EmailTotal = d.EmailTotal,
                     QQCount = d.QQCount,
-                    Total = d.Total
+                    Total = d.Total,
+                    TakeOffDate = d.TakeOffDate.HasValue ? DateOnly.FromDateTime(d.TakeOffDate.Value) : null
                 }).ToList()
             };
         }
 
-        public async Task<UserCountSummaryChartDto> GetUserCountChartData()
+        public async Task<UserCountSummaryChartDto> GetUserCountChartData(DateTime startDate, DateTime endDate)
         {
             var data = await _dbContext.TblTransactions
-                .Where(t => t.IsDeleted == false)
-                .GroupBy(t => t.RepliedBy) // Group by user
+                .Where(t => !t.IsDeleted &&
+                    t.TakeOffDate.HasValue &&
+                    t.TakeOffDate.Value.Date >= startDate.Date &&
+                    t.TakeOffDate.Value.Date <= endDate.Date)
+                .GroupBy(t => new { t.RepliedBy, t.TakeOffDate })
                 .Select(g => new
                 {
-                    User = g.Key,
+                    User = g.Key.RepliedBy,
                     CallCount = g.Count(t => t.TransactionType == "Phone"),
                     MailCount = g.Count(t => t.TransactionType == "Email"),
-                    QQCount = g.Count(t=> t.TransactionType == "QQ"),
-                    Total = g.Count()
-                    
+                    QQCount = g.Count(t => t.TransactionType == "QQ"),
+                    Total = g.Count(),
+                    TakeOffDate = g.Key.TakeOffDate
                 })
                 .ToListAsync();
 
@@ -143,7 +169,8 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
                     CallCount = d.CallCount,
                     EMailCount = d.MailCount,
                     QQCount = d.QQCount,
-                    Total = d.Total
+                    Total = d.Total,
+                    TakeOffDate = d.TakeOffDate.HasValue ? DateOnly.FromDateTime(d.TakeOffDate.Value) : null
                 }).ToList()
             };
         }
@@ -154,10 +181,10 @@ namespace CNCSwebApiProject.Services.WorkloadStatistics
         }
 
         public Task<IEnumerable<TransactionDto>> GetWorkloadStatistics()
-        {          
+        {
             throw new NotImplementedException();
         }
-          
-     
+
     }
+
 }

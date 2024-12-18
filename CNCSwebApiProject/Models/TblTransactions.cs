@@ -37,7 +37,7 @@ public partial class TblTransactions
 
     public string? LogId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     public virtual TblDescriptions? Description { get; set; }
 

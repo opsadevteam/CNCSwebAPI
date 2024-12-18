@@ -31,7 +31,9 @@
         {
             public string Label { get; set; }
             public int Y { get; set; }
+            public DateOnly? TakeOffDate { get; set; }
         }
+
 
         public class ChartDataTableTotalDataPoint
         {
@@ -39,7 +41,8 @@
             public int CallTotal { get; set; }
             public int EmailTotal { get; set; }
             public int QQCount { get; set; }
-            public int Total {  get; set; }
+            public int Total { get; set; }
+            public DateOnly? TakeOffDate { get; set; }
         }
 
         public class TransactionPerDayDataPoint
@@ -49,6 +52,7 @@
             public int EmailTotal { get; set; }
             public int QQCount { get; set; }
             public int Total { get; set; }
+            public DateOnly? TakeOffDate { get; set; }
         }
 
 
@@ -59,6 +63,7 @@
             public int EMailCount { get; set; }
             public int QQCount { get; set; }
             public int Total { get; set; }
+            public DateOnly? TakeOffDate { get; set; }
         }
 
         public class DescriptionDataPoint
@@ -68,6 +73,7 @@
             public int EMailCount { get; set; }
             public int QQCount { get; set; }
             public int Total { get; set; }
+            public DateOnly? TakeOffDate { get; set; }
         }
 
     }

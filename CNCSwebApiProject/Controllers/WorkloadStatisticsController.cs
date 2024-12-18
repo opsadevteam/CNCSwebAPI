@@ -18,51 +18,67 @@ namespace CNCSwebApiProject.Controllers
 
         // GET api/v1/workloadstatistics/productsummary
         [HttpGet("productsummary")]
-        public async Task<IActionResult> GetProductSummaryChartData()
+        public async Task<IActionResult> GetProductSummaryChartData(DateTime startDate, DateTime endDate)
         {
-            var data = await _workloadStatisticsService.GetProductSummaryChartData();
+            var data = await _workloadStatisticsService.GetProductSummaryChartData(startDate, endDate);
             return Ok(data);
         }
 
+        //[HttpGet("productsummary")]
+        //public async Task<IActionResult> GetProductSummaryChartData([FromQuery] string startDate, [FromQuery] string endDate)
+        //{
+        //    try
+        //    {
+        //        DateTime parsedStartDate = _workloadStatisticsService.ParseDateTime(startDate);
+        //        DateTime parsedEndDate = _workloadStatisticsService.ParseDateTime(endDate);
+
+        //        var result = await _workloadStatisticsService.GetProductSummaryChartData(parsedStartDate, parsedEndDate);
+        //        return Ok(result);
+        //    }
+        //    catch (ArgumentException ex)
+        //    {
+        //        return BadRequest(ex.Message); // Return error if date format is invalid
+        //    }
+        //}
+
+
         // GET api/v1/workloadstatistics/productsummary/total
         [HttpGet("productsummary/total")]
-        public async Task<IActionResult> GetProductSummaryChartTotal()
+        public async Task<IActionResult> GetProductSummaryChartTotal(DateTime startDate, DateTime endDate)
         {
-            var data = await _workloadStatisticsService.GetProductSummaryChartTotal();
+            var data = await _workloadStatisticsService.GetProductSummaryChartTotal(startDate, endDate);
             return Ok(data);
         }
 
         // GET api/v1/workloadstatistics/usercount
         [HttpGet("usercount")]
-        public async Task<IActionResult> GetUserCountChartData()
+        public async Task<IActionResult> GetUserCountChartData(DateTime startDate, DateTime endDate)
         {
-            var data = await _workloadStatisticsService.GetUserCountChartData();
+            var data = await _workloadStatisticsService.GetUserCountChartData(startDate, endDate);
             return Ok(data);
         }
 
-        // WorkloadStatisticsController.cs
+        // GET api/v1/workloadstatistics/transactionperday
         [HttpGet("transactionperday")]
-        public async Task<IActionResult> GetTransactionPerDay()
+        public async Task<IActionResult> GetTransactionPerDay(DateTime startDate, DateTime endDate)
         {
-            var data = await _workloadStatisticsService.GetTransactionPerDay();
-            return Ok(data); // Return grouped data by day
+            var data = await _workloadStatisticsService.GetTransactionPerDay(startDate, endDate);
+            return Ok(data);
         }
 
-        // Endpoint to fetch the description table
+        // GET api/v1/workloadstatistics/description-table
         [HttpGet("description-table")]
-        public async Task<ActionResult<DescriptionTableDto>> GetDescriptionTable()
+        public async Task<ActionResult<DescriptionTableDto>> GetDescriptionTable(DateTime startDate, DateTime endDate)
         {
             try
             {
-                var result = await _workloadStatisticsService.GetDescriptionTable();
-                return Ok(result); // Return the result as a 200 OK response
+                var result = await _workloadStatisticsService.GetDescriptionTable(startDate, endDate);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                // Log error (for example, using a logging framework like Serilog or NLog)
-                return StatusCode(500, "Internal server error: " + ex.Message);
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
     }
 }
