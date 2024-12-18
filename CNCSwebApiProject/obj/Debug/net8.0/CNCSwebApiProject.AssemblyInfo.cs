@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e9e23973b2e681468cb97a46dd9164a60ed98db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94c80d1e84da4b6427107b3c102c4e1ad6926482")]
 [assembly: System.Reflection.AssemblyProductAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CNCSwebApiProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
